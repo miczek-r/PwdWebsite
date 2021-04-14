@@ -1,0 +1,56 @@
+<div id="login-content">
+  <mat-card>
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="Logowanie">
+
+        <form class="form" novalidate>
+          <mat-form-field>
+            <mat-label>E-mail</mat-label>
+            <mat-icon matPrefix>perm_identity</mat-icon>
+            <input matInput />
+          </mat-form-field>
+
+          <mat-form-field >
+            <mat-icon matPrefix>lock</mat-icon>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" />
+          </mat-form-field>
+        </form>
+
+      </mat-tab>
+      <mat-tab label="Rejestracja"> 
+          
+        <form class="form" novalidate>
+            <mat-form-field>
+              <mat-label>E-mail</mat-label>
+              <mat-icon matPrefix>perm_identity</mat-icon>
+              <input matInput />
+            </mat-form-field>
+  
+            <mat-form-field >
+              <mat-icon matPrefix>lock</mat-icon>
+              <mat-label>Password</mat-label>
+              <input matInput type="password" />
+            </mat-form-field>
+          </form>
+
+    </mat-tab>
+      <mat-tab label="Zapomniałem Hasła">
+          
+        <form class="form" novalidate>
+            <mat-form-field>
+              <mat-label>E-mail</mat-label>
+              <mat-icon matPrefix>perm_identity</mat-icon>
+              <input matInput />
+            </mat-form-field>
+  
+          </form>
+    
+    </mat-tab>
+    </mat-tab-group>
+    <mat-card-content> </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="accent"  routerLink="/home/dashbord">Zaloguj</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
