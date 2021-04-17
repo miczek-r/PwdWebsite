@@ -23,7 +23,6 @@ export class AuthService {
       password: credentials.password
     }, httpOptions);
 
-    console.log()
   }
 
   register(user): Observable<any> {
@@ -34,7 +33,6 @@ export class AuthService {
     }, httpOptions);
 
 
-    console.log(this.getUser());
   }
 
   logout(): void {

@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthorizationComponent } from './authorization/authorization/authorization.component';
 import { RemindPasswordComponent } from './authorization/remind-password/remind-password.component';
 import { RegisterComponent } from './authorization/register/register.component';
+import { SaldoComponent } from './miniCards/saldo/saldo.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RegisterComponent } from './authorization/register/register.component';
     TestComponent,
     AuthorizationComponent,
     RemindPasswordComponent,
-    RegisterComponent
+    RegisterComponent,
+    SaldoComponent
   ],
   imports: [
     BrowserModule,
