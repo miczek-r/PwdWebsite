@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body {  font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+  margin:0;
+  padding:1rem;
+  overflow:hidden;
+  background-color: rgba(208, 237, 247, 0.3);
+}
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-badge-content {
+  top: -3px !important;
+  right: -19px !important;
+}

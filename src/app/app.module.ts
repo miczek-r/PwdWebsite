@@ -7,7 +7,6 @@ import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './authorization/login/login.component';
 import { DashbordComponent } from './home/dashbord/dashbord.component';
-import { TestComponent } from './test/test.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,17 +14,33 @@ import { AuthorizationComponent } from './authorization/authorization/authorizat
 import { RemindPasswordComponent } from './authorization/remind-password/remind-password.component';
 import { RegisterComponent } from './authorization/register/register.component';
 import { SaldoComponent } from './miniCards/saldo/saldo.component';
+import { LogoutComponent } from './miniCards/logout/logout.component';
+import { ProfileComponent } from './miniCards/profile/profile.component';
+import { ExpensesComponent } from './miniCards/expenses/expenses.component';
+import { ChartsModule } from 'ng2-charts';
+import { DiagramComponent } from './miniCards/diagram/diagram.component';
+import { TargetProgressComponent } from './miniCards/target-progress/target-progress.component';
+import { IncomeComponent } from './miniCards/income/income.component';
+import { CalendarComponent } from './miniCards/calendar/calendar.component';
+import { HomeComponent } from './miniCards/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashbordComponent,
-    TestComponent,
     AuthorizationComponent,
     RemindPasswordComponent,
     RegisterComponent,
-    SaldoComponent
+    SaldoComponent,
+    LogoutComponent,
+    ProfileComponent,
+    ExpensesComponent,
+    DiagramComponent,
+    TargetProgressComponent,
+    IncomeComponent,
+    CalendarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +49,8 @@ import { SaldoComponent } from './miniCards/saldo/saldo.component';
     BrowserAnimationsModule,
     LayoutModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,25 +1,71 @@
 
-<div class="dashbord-main">
+<mat-card class="dashbord-main mat-elevation-z5">
 <mat-grid-list cols="10" rowHeight="100px" gutterSize=1rem>
     <mat-grid-tile colspan=3 rowspan=2>
         <div class="grid">
-        <mat-card >
-            <app-saldo></app-saldo>
+        <mat-card [class.warning]="user.saldo<0" [class.neutral]="user.saldo==0" [class.good]="user.saldo>0">
+            <app-saldo [user]=user></app-saldo>
         </mat-card>
     </div>
     </mat-grid-tile>
 
-    <mat-grid-tile colspan=1 rowspan=2>
+    <mat-grid-tile colspan=3 rowspan=2>
         <div class="grid">
         <mat-card>
-            <mat-card-content>asd</mat-card-content>
+            <app-expenses></app-expenses>
+        </mat-card>
+    </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan=4 rowspan=2>
+        <div class="grid">
+        <mat-card class="primary">
+            <app-profile [user]=user></app-profile>
+        </mat-card>
+    </div>
+    </mat-grid-tile>
+    
+    <mat-grid-tile colspan=4 rowspan=1>
+        <div class="grid">
+        <mat-card class="pink">
+            <app-income></app-income>
         </mat-card>
     </div>
     </mat-grid-tile>
     <mat-grid-tile colspan=1 rowspan=1>
+        <div class="grid logout">
+        <mat-card>
+            <mat-icon  matBadge="10" matBadgePosition="after" matBadgeOverlap="false" matBadgeColor="warn">notifications_none</mat-icon>
+        </mat-card>
+    </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan=2 rowspan=2>
         <div class="grid">
         <mat-card>
-            <mat-card-content>asd</mat-card-content>
+            <app-target-progress></app-target-progress>
+        </mat-card>
+    </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan=3 rowspan=2>
+        <div class="grid">
+        <mat-card>
+            <app-calendar></app-calendar>
+        </mat-card>
+    </div>
+    </mat-grid-tile>
+    
+    
+    <mat-grid-tile colspan=5 rowspan=3>
+        <div class="grid">
+        <mat-card>
+            <app-diagram></app-diagram>
+        </mat-card>
+    </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan=4 rowspan=2>
+        <div class="grid">
+        <mat-card class="home">
+            <app-home></app-home>
         </mat-card>
     </div>
     </mat-grid-tile>
@@ -27,19 +73,20 @@
         <div class="grid">
         <mat-card>
             <mat-card-content>
-                <mat-icon>arrow_right_alt</mat-icon>
+                <mat-icon>settings</mat-icon>
             </mat-card-content>
         </mat-card>
     </div>
     </mat-grid-tile>
-    <mat-grid-tile colspan=2 rowspan=1>
-        <div class="grid">
-        <mat-card>
-            <mat-card-content>asd</mat-card-content>
+    <mat-grid-tile colspan=1 rowspan=1>
+        <div class="grid logout">
+        <mat-card (click)="logout()">
+            <mat-card-content>
+                <app-logout></app-logout>
+            </mat-card-content>
         </mat-card>
     </div>
     </mat-grid-tile>
-    
         
   </mat-grid-list>
-</div>
+</mat-card>
