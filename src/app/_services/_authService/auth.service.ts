@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
-const AUTH_API = 'http://188.137.40.31:8080/api/Authorize';
+const AUTH_API = environment.webAPI+'/Authorize';
 
 const USER_KEY = 'auth-user';
 

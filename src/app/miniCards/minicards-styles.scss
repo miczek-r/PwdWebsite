@@ -39,6 +39,15 @@ h1{
     color:black;
 }
 
+.calendar{
+    display:flex;
+    margin: auto;
+    *{
+        width:42px;
+    }
+}
+
+
 h3{
     color:white;
     text-shadow: 1px;

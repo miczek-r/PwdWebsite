@@ -12,7 +12,13 @@ body {
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-.mat-badge-content {
-  top: -3px !important;
-  right: -19px !important;
+
+@font-face {
+  font-family: BMP;
+  src: url(assets/BMP.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: GUR;
+  src: url(assets/GUR.ttf) format("opentype");
 }

@@ -1,12 +1,13 @@
 <div class=" user ">
-    <div>
+    <div *ngIf="expenses">
         <canvas baseChart
             height="120px"
           [data]="doughnutChartData"
           [labels]="doughnutChartLabels"
           [chartType]="doughnutChartType"
+          [colors]="doughnutChartColors"
           [legend]=false>
         </canvas>
     </div><br>
-    <h3 class="black">Wydatki(ostatnie 30 dni): 2000</h3>
+    <h3 class="black">Wydatki(ostatni miesiąc): {{expenseSum}} zł</h3>
   </div>

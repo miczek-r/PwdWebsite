@@ -1,23 +1,16 @@
 <div class="card user centY">
-  <mat-grid-list cols="3" rowHeight="100px">
-    <mat-grid-tile>
-      <mat-card class="textCent green ">
-        <h1 class="noMargin">1</h1>
-        <div>Kwie</div>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-card class="textCent red">
-        <h1 class="noMargin">2</h1>
-        <div>Kwie</div>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-card class="textCent red">
-        <h1 class="noMargin">3</h1>
-        <div>Kwie</div>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="calendar">
+    <mat-card
+      *ngFor="let expense of calendar"
+      class="textCent"
+      [class]="expense.typeOfExpenseId == 1 ? 'green' : 'red'"
+      matTooltipPosition="above"
+      [matTooltip]="(expense.typeOfExpenseId == 1 ? '+':'-')+ expense.amount "
+      [matTooltipClass]="expense.typeOfExpenseId == 1 ? 'example-tooltip-green' : 'example-tooltip-red'"
+    >
+      <h1 class="noMargin">{{ expense.day | date: "dd" }}</h1>
+      <div>{{ expense.month }}</div>
+    </mat-card>
+  </div>
   <div class="textCent">Nadchodzące wydatki/przychody</div>
 </div>

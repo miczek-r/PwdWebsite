@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { Expense } from 'src/app/models/expense/expense';
+import { User } from 'src/app/models/user/user';
 import { AuthService } from 'src/app/_services/_authService/auth.service';
+import { ExpenseService } from 'src/app/_services/_expenseService/expense.service';
 
 @Component({
   selector: 'app-dashbord',
@@ -9,10 +11,14 @@ import { AuthService } from 'src/app/_services/_authService/auth.service';
 })
 export class DashbordComponent implements OnInit {
   user:User;
-  constructor(private authService: AuthService) { }
+  expenses:Expense[];
+  constructor(private authService: AuthService,private expenseService: ExpenseService) { }
 
   ngOnInit(): void {
     this.user = this.authService.getUser();
+    this.expenseService.GetUserExpenses(this.user.userId).subscribe((data)=>{
+      this.expenses=data;
+    });
   }
 
 logout(){

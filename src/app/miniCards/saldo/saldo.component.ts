@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/models/user/user';
 
 @Component({
   selector: 'app-saldo',

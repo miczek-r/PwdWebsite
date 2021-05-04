@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './authorization/login/login.component';
-import { DashbordComponent } from './home/dashbord/dashbord.component';
+import { DashbordComponent } from './user/dashbord/dashbord.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';

@@ -1,4 +1,5 @@
 
+<div class="logo"><img src="../../../assets/logo.png" height="100px">CASHBUDDY</div>
 <mat-card class="dashbord-main mat-elevation-z5">
 <mat-grid-list cols="10" rowHeight="100px" gutterSize=1rem>
     <mat-grid-tile colspan=3 rowspan=2>
@@ -11,8 +12,8 @@
 
     <mat-grid-tile colspan=3 rowspan=2>
         <div class="grid">
-        <mat-card>
-            <app-expenses></app-expenses>
+        <mat-card *ngIf="expenses">
+            <app-expenses [expenses]="expenses"></app-expenses>
         </mat-card>
     </div>
     </mat-grid-tile>
@@ -26,8 +27,8 @@
     
     <mat-grid-tile colspan=4 rowspan=1>
         <div class="grid">
-        <mat-card class="pink">
-            <app-income></app-income>
+        <mat-card *ngIf="expenses" class="pink">
+            <app-income [expenses]="expenses"></app-income>
         </mat-card>
     </div>
     </mat-grid-tile>
@@ -47,8 +48,8 @@
     </mat-grid-tile>
     <mat-grid-tile colspan=3 rowspan=2>
         <div class="grid">
-        <mat-card>
-            <app-calendar></app-calendar>
+        <mat-card *ngIf="expenses">
+            <app-calendar [expenses]="expenses"></app-calendar>
         </mat-card>
     </div>
     </mat-grid-tile>
@@ -56,8 +57,8 @@
     
     <mat-grid-tile colspan=5 rowspan=3>
         <div class="grid">
-        <mat-card>
-            <app-diagram></app-diagram>
+        <mat-card *ngIf="expenses">
+            <app-diagram [expenses]="expenses"></app-diagram>
         </mat-card>
     </div>
     </mat-grid-tile>
@@ -65,7 +66,7 @@
     <mat-grid-tile colspan=4 rowspan=2>
         <div class="grid">
         <mat-card class="home">
-            <app-home></app-home>
+            <app-home [userId]="user.userId"></app-home>
         </mat-card>
     </div>
     </mat-grid-tile>
