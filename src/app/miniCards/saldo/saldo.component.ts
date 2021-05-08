@@ -7,11 +7,11 @@ import { User } from 'src/app/models/user/user';
   styleUrls: ['../minicards-styles.scss']
 })
 export class SaldoComponent implements OnInit {
-  @Input() user:User;
+  @Input() user: User;
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
 
 }

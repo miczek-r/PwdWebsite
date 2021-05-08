@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './authorization/login/login.component';
-import { DashbordComponent } from './user/dashbord/dashbord.component';
+import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,12 +23,18 @@ import { TargetProgressComponent } from './miniCards/target-progress/target-prog
 import { IncomeComponent } from './miniCards/income/income.component';
 import { CalendarComponent } from './miniCards/calendar/calendar.component';
 import { HomeComponent } from './miniCards/home/home.component';
+import { ExpenseLimitComponent } from './user/expense-limit/expense-limit.component';
+import { ExpenseListComponent } from './user/expense-list/expense-list.component';
+import { AddExpenseComponent } from './user/add-expense/add-expense.component';
+import { AddIncomeComponent } from './user/add-income/add-income.component';
+import { UserInfoComponent } from './user/user-info/user-info.component';
+import { ConfirmEmailComponent } from './authorization/confirm-email/confirm-email.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashbordComponent,
+    DashboardComponent,
     AuthorizationComponent,
     RemindPasswordComponent,
     RegisterComponent,
@@ -40,7 +46,14 @@ import { HomeComponent } from './miniCards/home/home.component';
     TargetProgressComponent,
     IncomeComponent,
     CalendarComponent,
-    HomeComponent
+    HomeComponent,
+    ExpenseLimitComponent,
+    DashboardComponent,
+    ExpenseListComponent,
+    AddExpenseComponent,
+    AddIncomeComponent,
+    UserInfoComponent,
+    ConfirmEmailComponent
   ],
   imports: [
     BrowserModule,

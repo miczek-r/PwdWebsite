@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/_services/_authService/auth.service';
   styleUrls: ['../minicards-styles.scss']
 })
 export class ProfileComponent implements OnInit {
-  @Input() user:User;
+  @Input() user: User;
   constructor() { }
 
   ngOnInit(): void {

@@ -11,7 +11,7 @@ import { ExpenseService } from 'src/app/_services/_expenseService/expense.servic
 })
 export class ExpensesComponent implements OnInit {
   @Input() expenses: Expense[];
-  expenseSum: number = 0;
+  expenseSum = 0;
   expenseTypeSum: number;
   public doughnutChartLabels: Label[] = [];
   public doughnutChartData: MultiDataSet = [[]
@@ -22,17 +22,17 @@ export class ExpensesComponent implements OnInit {
   constructor(private expenseService: ExpenseService) { }
 
   ngOnInit(): void {
-    let now = new Date();
+    const now = new Date();
     now.setMonth(now.getMonth() - 1);
-    let afterdate = new Date();
-    this.expenses = this.expenses.filter(a => new Date(a.expenseDate) > now && new Date(a.expenseDate)<= afterdate)
-    
+    const afterdate = new Date();
+    this.expenses = this.expenses.filter(a => new Date(a.expenseDate) > now && new Date(a.expenseDate) <= afterdate);
+
     this.expenseService.GetAllExpenseTypes().subscribe((data) => {
       data.forEach(element => {
-        if (element.typeOfExpenseId != 1) {
+        if (element.typeOfExpenseId !== 1) {
           this.doughnutChartLabels.push(element.name);
           this.expenseTypeSum = 0;
-          this.expenses.filter(a => a.typeOfExpenseId == element.typeOfExpenseId).forEach(expense => {
+          this.expenses.filter(a => a.typeOfExpenseId === element.typeOfExpenseId).forEach(expense => {
             this.expenseTypeSum += expense.amount;
           });
           this.doughnutChartData[0].push(this.expenseTypeSum);

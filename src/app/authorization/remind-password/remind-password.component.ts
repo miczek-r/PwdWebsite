@@ -1,3 +1,5 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from './../../_services/_userService/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['../authorization/authorization.component.scss']
 })
 export class RemindPasswordComponent implements OnInit {
-
-  constructor() { }
+  form: any = {};
+  shakeIt = false;
+  constructor(private userService: UserService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+  }
+
+  remind(): void {
+    this.userService.GetPasswordRestorationToken(this.form.email).subscribe(
+      data => {
+        this.snackBar.open('Wysłano prośbę zmiany hasła. Sprawdź pocztę', 'Close', { duration: 2000, });
+      },
+      err => {
+        this.shakeDialog();
+        this.snackBar.open('', 'Close', { duration: 2000, });
+      }
+    );
+  }
+
+  shakeDialog(): void {
+    this.shakeIt = true;
+    setTimeout((arg) => {
+      this.shakeIt = false;
+    },
+      600);
   }
 
 }

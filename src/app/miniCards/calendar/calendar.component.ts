@@ -8,16 +8,19 @@ import { Expense } from 'src/app/models/expense/expense';
   styleUrls: ['../minicards-styles.scss']
 })
 export class CalendarComponent implements OnInit {
-  @Input() expenses: Expense[]
+  @Input() expenses: Expense[];
   constructor() { }
-  calendar: calendar[] = [];
+  calendar: Calendar[] = [];
   ngOnInit(): void {
-    let today = new Date();
+    const today = new Date();
     today.setHours(0, 0, 0, 0);
     this.expenses = this.expenses.filter(exp => new Date(exp.expenseDate) >= today);
     this.expenses = this.expenses.sort((a, b) => +new Date(a.expenseDate) - +new Date(b.expenseDate)).slice(0, 3);
     this.expenses.forEach(element => {
-      this.calendar.push({ day: new Date(element.expenseDate), month: new Date(element.expenseDate).toLocaleString("pl-PL", { month: 'short'}), amount: element.amount, typeOfExpenseId: element.typeOfExpenseId })
+      this.calendar.push({
+        day: new Date(element.expenseDate), month: new Date(element.expenseDate).toLocaleString('pl-PL', { month: 'short' }),
+        amount: element.amount, typeOfExpenseId: element.typeOfExpenseId
+      });
     });
 
   }
@@ -25,9 +28,9 @@ export class CalendarComponent implements OnInit {
 
 
 }
-interface calendar {
+interface Calendar {
   day: Date;
   month: string;
   amount: number;
-  typeOfExpenseId:number;
+  typeOfExpenseId: number;
 }

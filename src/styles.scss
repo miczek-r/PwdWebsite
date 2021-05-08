@@ -1,17 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
 
-html,
-body {
-  height: 100%;
-  margin:0;
-  padding:1rem;
-  overflow:hidden;
-  background-color: rgba(208, 237, 247, 0.3);
-}
-body {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
 
 @font-face {
   font-family: BMP;
@@ -22,3 +11,41 @@ body {
   font-family: GUR;
   src: url(assets/GUR.ttf) format("opentype");
 }
+
+@font-face {
+  font-family: CaviarDreams;
+  src: url(assets/CaviarDreams.ttf) format("opentype");
+}
+
+html,
+body {
+  height: 100%;
+  margin:0;
+  padding:1rem;
+  overflow:hidden;
+  background-color: rgba(208, 237, 247, 0.3);
+}
+
+
+body {
+  font-family: 'CaviarDreams',Roboto, "Helvetica Neue", sans-serif ;
+}
+
+.logo{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  font-family: GUR;
+    font-size: 5rem;
+    color: #EEB44D;
+    align-items: center;
+    *{
+      margin: 0 1rem;
+    }
+}
+
+mat-form-field{
+  width: 100%;
+}
+

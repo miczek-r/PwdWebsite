@@ -6,6 +6,9 @@ export class User {
     email: string;
     password: string;
     saldo: number;
-
+    homeId: number;
+    activationToken: string;
+    passwordRestorationToken: string;
+    expenseLimit: number;
     constructor(){}
 }

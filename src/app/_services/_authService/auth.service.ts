@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/app/models/user/user';
 
-const AUTH_API = environment.webAPI+'/Authorize';
+const AUTH_API = environment.webAPI + '/Authorize';
 
 const USER_KEY = 'auth-user';
 
@@ -36,6 +37,13 @@ export class AuthService {
 
   }
 
+  update(): void {
+    this.http.get<User>(environment.webAPI + '/User').subscribe(result => {
+      this.setUser(result[0]);
+    }
+    );
+  }
+
   logout(): void {
     window.sessionStorage.clear();
   }
@@ -49,6 +57,6 @@ export class AuthService {
     return JSON.parse(sessionStorage.getItem(USER_KEY));
   }
 
-  
+
 
 }

@@ -1,4 +1,4 @@
 export class ExpenseType {
-    typeOfExpenseId:number;
-    name:string;
+  typeOfExpenseId: number;
+  name: string;
 }
