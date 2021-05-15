@@ -1,1 +1,15 @@
-<p>home-income works!</p>
+<div class="wrapper">
+  <h1>Rozpis przychodów użytkowników domu</h1>
+  <table>
+    <tr>
+      <th>Imię i Nazwisko</th>
+      <th>Email</th>
+      <th>Przychody</th>
+    </tr>
+  <tr *ngFor="let user of users" matColumnDef="name">
+    <td>{{user.firstName}} {{user.lastName}}</td>
+    <td>{{user.email}} </td>
+    <td>{{countIncoms(user.userId)}}</td>
+  </tr>
+  </table>
+</div>

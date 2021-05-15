@@ -1,1 +1,15 @@
-<p>home-saldo works!</p>
+<div class="wrapper">
+  <h1>Rozpis sald użytkowników domu</h1>
+  <table>
+    <tr>
+      <th>Imię i Nazwisko</th>
+      <th>Email</th>
+      <th>Saldo</th>
+    </tr>
+  <tr *ngFor="let user of users" matColumnDef="name">
+    <td>{{user.firstName}} {{user.lastName}}</td>
+    <td>{{user.email}} </td>
+    <td>{{user.saldo}}</td>
+  </tr>
+  </table>
+</div>

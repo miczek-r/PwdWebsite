@@ -5,8 +5,8 @@ mat-card {
 }
 
 .user-wrapper {
-  overflow-y: scroll;
-  height: -webkit-fill-available;
+  overflow-y: auto;
+  height:268px;
 }
 
 :host {

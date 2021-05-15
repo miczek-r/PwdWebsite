@@ -19,11 +19,18 @@ export class UserService {
   }
 
   UpdateUser(user: User): Observable<any> {
-    const userId = user.userId;
-    return this.http.put(environment.webAPI + '/User/' + userId, user);
+    return this.http.put(environment.webAPI + '/User/', user);
   }
 
   GetUser(userId: number): Observable<User> {
     return this.http.get<User>(environment.webAPI + '/User/' + userId);
+  }
+
+  JoinHome(userId: number, homeId: number) {
+    return this.http.put(environment.webAPI + '/User/JoinHome/' + userId + '/' + homeId, null);
+  }
+
+  LeaveHome(userId: number) {
+    return this.http.put(environment.webAPI + '/User/LeaveHome/' + userId, null);
   }
 }

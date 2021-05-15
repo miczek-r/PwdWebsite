@@ -1,3 +1,7 @@
+import { NotificationsComponent } from './../notifications/notifications.component';
+import { Notification } from './../../models/notification/notification';
+import { NotificationService } from 'src/app/_services/_notificationService/notification.service';
+import { CreateHomeComponent } from './../create-home/create-home.component';
 import { SetSaldoComponent } from './../set-saldo/set-saldo.component';
 import { UserInfoComponent } from './../user-info/user-info.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -19,12 +23,18 @@ import { EditUserComponent } from '../edit-user/edit-user.component';
 export class UserDashboardComponent implements OnInit {
 
 
-
+  notiCount = 0;
   userId: number;
   user: User[] = new Array<User>();
   expenses: Expense[];
+  notifications: Notification[];
   home: Home;
-  constructor(private authService: AuthService, private expenseService: ExpenseService, public dialog: MatDialog) { }
+  constructor(
+    private authService: AuthService,
+    private expenseService: ExpenseService,
+    private notificationService: NotificationService,
+    public dialog: MatDialog
+  ) { }
 
   dialogs =
     {
@@ -33,7 +43,9 @@ export class UserDashboardComponent implements OnInit {
       expenseLimit: ExpenseLimitComponent,
       userInfo: UserInfoComponent,
       editUser: EditUserComponent,
-      saldo: SetSaldoComponent
+      saldo: SetSaldoComponent,
+      createHome: CreateHomeComponent,
+      notifications: NotificationsComponent
     };
 
 
@@ -48,6 +60,10 @@ export class UserDashboardComponent implements OnInit {
       this.user.push(this.authService.getUser());
       this.expenseService.GetUserExpenses(this.user[0].userId).subscribe((data) => {
         this.expenses = data;
+      });
+      this.notificationService.GetUserNotifications(this.user[0].email).subscribe((data) => {
+        this.notifications = data;
+        this.notiCount = this.notifications.filter(x => !x.read).length;
       });
     });
 
@@ -65,8 +81,11 @@ export class UserDashboardComponent implements OnInit {
     const dialogRef = this.dialog.open(
       this.dialogs[dialog]
       , {
-        width: '500px',
-        data: { user: this.user[0] }
+        width: '600px',
+        data: {
+          user: this.user[0],
+          notifications: this.notifications
+        }
       });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -42,6 +42,10 @@ import { HomeUserInfoComponent } from './home/home-user-info/home-user-info.comp
 import { AddToHomeComponent } from './home/add-to-home/add-to-home.component';
 import { EditHomeComponent } from './home/edit-home/edit-home.component';
 import { HomeIncomeComponent } from './home/home-income/home-income.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { CreateHomeComponent } from './user/create-home/create-home.component';
+import { NotificationsComponent } from './user/notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +81,9 @@ import { HomeIncomeComponent } from './home/home-income/home-income.component';
     HomeIncomeComponent,
     HomeUserInfoComponent,
     AddToHomeComponent,
-    EditHomeComponent
+    EditHomeComponent,
+    CreateHomeComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
@@ -88,9 +94,11 @@ import { HomeIncomeComponent } from './home/home-income/home-income.component';
     FormsModule,
     HttpClientModule,
     ChartsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDatepickerModule,
+     MatMomentDateModule
   ],
-  providers: [],
+  providers: [ {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

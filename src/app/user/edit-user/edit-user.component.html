@@ -12,7 +12,6 @@
       type="text"
       name="firstName"
       [(ngModel)]="user.firstName"
-      required
       #firstName="ngModel"
     />
   </mat-form-field>
@@ -23,7 +22,6 @@
       type="text"
       name="lastName"
       [(ngModel)]="user.lastName"
-      required
       #lastName="ngModel"
     />
   </mat-form-field>
@@ -35,7 +33,6 @@
       disabled
       name="dateOfBirth"
       [(ngModel)]="user.dateOfBirth"
-      required
       #dateOfBirth="ngModel"
     />
     <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>

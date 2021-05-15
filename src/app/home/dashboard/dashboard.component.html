@@ -130,6 +130,7 @@
         [class.warning]="saldo < 0"
         [class.neutral]="saldo == 0"
         [class.good]="saldo > 0"
+        (click)="openDialog('homeSaldo')"
       >
         <app-saldo [user]="user"></app-saldo>
         <div class="go-arrow">
@@ -145,7 +146,11 @@
     </div>
 
     <div fxFlex="66.6" fxFlex.lt-md="100">
-      <mat-card *ngIf="tempUser" class="home clicable" (click)="openDialog('homeInfo')">
+      <mat-card
+        *ngIf="tempUser"
+        class="home clicable"
+        (click)="openDialog('homeInfo')"
+      >
         <app-home [homeId]="tempUser.homeId"></app-home>
         <div class="go-arrow">
           <mat-icon style="transform: scale(1.4)">keyboard_arrow_down</mat-icon>
@@ -171,7 +176,11 @@
     fxLayoutGap="2rem grid"
   >
     <div fxFlex="100">
-      <mat-card *ngIf="expenses" class="pink small clicable">
+      <mat-card
+        *ngIf="expenses"
+        class="pink small clicable"
+        (click)="openDialog('homeIncome')"
+      >
         <app-income [expenses]="expenses"></app-income>
         <div class="go-arrow">
           <mat-icon style="transform: scale(1.4)">keyboard_arrow_down</mat-icon>
@@ -216,7 +225,7 @@
       fxLayoutGap="2rem grid"
     >
       <div fxFlex="60" fxFlex.lt-md="100">
-        <mat-card *ngIf="expenses">
+        <mat-card class="medium" *ngIf="expenses">
           <app-calendar [expenses]="expenses"></app-calendar>
         </mat-card>
       </div>
@@ -231,7 +240,10 @@
       >
         <div fxFlex="50" class="logout">
           <div class="grid logout">
-            <mat-card class="small centered icon">
+            <mat-card
+              class="small centered icon"
+              (click)="openDialog('addToHome')"
+            >
               <mat-icon>add</mat-icon>
             </mat-card>
           </div>
@@ -239,7 +251,10 @@
 
         <div fxFlex="50" class="lg">
           <div class="grid logout">
-            <mat-card class="small centered icon">
+            <mat-card
+              class="small centered icon"
+              (click)="openDialog('homeEdit')"
+            >
               <mat-card-content>
                 <mat-icon>settings</mat-icon>
               </mat-card-content>

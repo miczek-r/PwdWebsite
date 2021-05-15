@@ -209,9 +209,9 @@
       </div>
 
       <div class="md nd" fxFlex="20" fxFlex.lt-md="100">
-        <mat-card class="small centered icon">
+        <mat-card class="small centered icon" (click)="openDialog('notifications')">
           <mat-icon
-            matBadge="10"
+            [matBadge]="notiCount"
             matBadgePosition="after"
             matBadgeOverlap="true"
             matBadgeColor="warn"
@@ -271,6 +271,7 @@
         class="home medium clicable"
         [routerLink]="user[0].homeId != null ? '/home/dashboard' : null"
         routerLinkActive="active"
+        (click)="user[0].homeId == null ? openDialog('createHome') : null"
       >
         <app-home [homeId]="user[0].homeId"></app-home>
         <div class="go-arrow">

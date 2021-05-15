@@ -1,3 +1,7 @@
+import { AddToHomeComponent } from './../add-to-home/add-to-home.component';
+import { EditHomeComponent } from './../edit-home/edit-home.component';
+import { HomeIncomeComponent } from './../home-income/home-income.component';
+import { HomeSaldoComponent } from './../home-saldo/home-saldo.component';
 import { HomeUserInfoComponent } from './../home-user-info/home-user-info.component';
 import { HomeInfoComponent } from './../home-info/home-info.component';
 import { Router } from '@angular/router';
@@ -24,7 +28,11 @@ export class HomeDashboardComponent implements OnInit {
   saldo = 0;
   dialogs =
     {
-      homeInfo: HomeInfoComponent
+      homeInfo: HomeInfoComponent,
+      homeSaldo: HomeSaldoComponent,
+      homeIncome: HomeIncomeComponent,
+      homeEdit: EditHomeComponent,
+      addToHome: AddToHomeComponent
     };
 
 
@@ -75,8 +83,7 @@ export class HomeDashboardComponent implements OnInit {
 
 
   leave(): void {
-    this.tempUser.homeId = null;
-    this.userService.UpdateUser(this.tempUser).subscribe((data) => {
+    this.userService.LeaveHome(this.tempUser.userId).subscribe((data) => {
       this.router.navigateByUrl("");
     });
   }
@@ -88,8 +95,13 @@ export class HomeDashboardComponent implements OnInit {
     const dialogRef = this.dialog.open(
       this.dialogs[dialog]
       , {
-        width: '500px',
-        data: { homeId: this.tempUser.homeId }
+        width: '600px',
+        data: {
+          homeId: this.tempUser.homeId,
+          users: this.user,
+          expenses: this.expenses,
+          sender: this.tempUser.email
+        }
       });
 
     dialogRef.afterClosed().subscribe(result => {

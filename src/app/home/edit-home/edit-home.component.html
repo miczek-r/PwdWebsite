@@ -6,40 +6,55 @@
   novalidate
 >
   <mat-form-field class="example-form-field">
-    <mat-label>Imię</mat-label>
+    <mat-label>Nazwa domu</mat-label>
     <input
       matInput
       type="text"
-      name="firstName"
-      [(ngModel)]="user.firstName"
+      name="homeName"
+      [(ngModel)]="home.homeName"
       required
-      #firstName="ngModel"
+      #homeName="ngModel"
     />
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Nazwisko</mat-label>
+    <mat-label>Ulica</mat-label>
     <input
       matInput
       type="text"
-      name="lastName"
-      [(ngModel)]="user.lastName"
-      required
-      #lastName="ngModel"
+      name="street"
+      [(ngModel)]="home.street"
+      #street="ngModel"
     />
   </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Data urodzenia</mat-label>
+  <mat-form-field>
+    <mat-label>Number budynku</mat-label>
     <input
       matInput
-      [matDatepicker]="dp3"
-      disabled
-      name="dateOfBirth"
-      [(ngModel)]="user.dateOfBirth"
-      required
-      #dateOfBirth="ngModel"
+      type="text"
+      name="houseNumber"
+      [(ngModel)]="home.houseNumber"
+      #houseNumber="ngModel"
     />
-    <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Kod pocztowy</mat-label>
+    <input
+      matInput
+      type="text"
+      name="postCode"
+      [(ngModel)]="home.postCode"
+      #postCode="ngModel"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Miasto</mat-label>
+    <input
+      matInput
+      type="text"
+      name="city"
+      [(ngModel)]="home.city"
+      #city="ngModel"
+    />
   </mat-form-field>
 
 

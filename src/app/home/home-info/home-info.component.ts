@@ -14,7 +14,7 @@ export class HomeInfoComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     homeService: HomeService
   ) {
-    homeService.GetHomeByUserId(data.homeId).subscribe(result => {
+    homeService.GetHomeById(data.homeId).subscribe(result => {
       this.home = result;
     });
   }

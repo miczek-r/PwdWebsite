@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Home } from 'src/app/models/home/home';
+import { HomeService } from 'src/app/_services/_homeService/home.service';
+import { Notification } from './../../models/notification/notification';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificationService } from 'src/app/_services/_notificationService/notification.service';
 
 @Component({
   selector: 'app-add-to-home',
@@ -6,10 +12,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-to-home.component.scss']
 })
 export class AddToHomeComponent implements OnInit {
+  home: Home;
+  form: any = {};
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<AddToHomeComponent>,
+    private notificationService: NotificationService,
+    private homeService: HomeService,
+    private snackBar: MatSnackBar
+  ) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    this.homeService.GetHomeById(this.data.homeId).subscribe(result => {
+      this.home = result;
+    });
   }
 
+  onSubmit(): void {
+    this.form['homeId'] = this.data.homeId;
+    this.form['text'] =
+      "Zostałeś zaporszony przez " + this.data.sender + " do domu: " + this.home.homeName;
+    this.form['notificationDate'] = new Date;
+    this.form['read'] = false;
+    this.notificationService.SendNotification(this.form).subscribe(
+      data => {
+        this.dialogRef.close("reload");
+      },
+      err => {
+        this.snackBar.open(err, 'Close', { duration: 2000, });
+      }
+    );
+  }
 }

@@ -19,7 +19,7 @@ export class ProfileListComponent implements OnInit {
     const dialogRef = this.dialog.open(
       HomeUserInfoComponent
       , {
-        width: '500px',
+        width: '600px',
         data: { user: this.user.find(x => x.userId === id) }
       });
 

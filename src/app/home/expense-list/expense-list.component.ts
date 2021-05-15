@@ -2,6 +2,7 @@ import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/cor
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Expense } from 'src/app/models/expense/expense';
 import { ExpenseType } from 'src/app/models/expenseType/expense-type';
 import { User } from 'src/app/models/user/user';
@@ -30,31 +31,41 @@ export class HomeExpenseListComponent {
     };
 
 
-  constructor(private authService: AuthService, private expenseService: ExpenseService) {
-    this.user = this.authService.getUser();
+  constructor(private authService: AuthService, private expenseService: ExpenseService,    private router: Router) {
+    this.authService.update().then(result => {
+      this.user = this.authService.getUser();
+      if (this.user.homeId === null) {
+        this.router.navigateByUrl("");
+      }
+      this.expenseService.GetHomeExpenses(this.user.homeId).subscribe((data) => {
+        this.expenses = data;
+        this.dataSource = new MatTableDataSource(this.expenses);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sortingDataAccessor = (item, property) => {
+          switch (property) {
+            case 'name': return item.nameOfExpense;
+            case 'expenseType': return this.expenseTypes[item.typeOfExpenseId];
+            case 'date': return item.expenseDate;
+            default: return item[property];
+          }
+        };
+        this.dataSource.sort = this.sort;
+        this.dataSource.filterPredicate =
+          (exp: Expense, filter: string) =>
+            !filter || (exp.typeOfExpenseId === JSON.parse(filter)['typeOfExpenseId'] || JSON.parse(filter)['typeOfExpenseId'].toString() === '')
+            && (JSON.parse(filter)['nameOfExpense'] === '' || exp.nameOfExpense.includes(JSON.parse(filter)['nameOfExpense']));
+      });
 
-    this.expenseService.GetHomeExpenses(this.user.homeId).subscribe((data) => {
-      this.expenses = data;
-      this.dataSource = new MatTableDataSource(this.expenses);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sortingDataAccessor = (item, property) => {
-        switch (property) {
-          case 'name': return item.nameOfExpense;
-          case 'expenseType': return this.expenseTypes[item.typeOfExpenseId];
-          case 'date': return item.expenseDate;
-          default: return item[property];
-        }
-      };
-      this.dataSource.sort = this.sort;
-      this.dataSource.filterPredicate =
-        (exp: Expense, filter: string) =>
-          !filter || (exp.typeOfExpenseId === JSON.parse(filter)['typeOfExpenseId'] || JSON.parse(filter)['typeOfExpenseId'].toString() === '')
-          && (JSON.parse(filter)['nameOfExpense'] === '' || exp.nameOfExpense.includes(JSON.parse(filter)['nameOfExpense']));
+      this.expenseService.GetAllExpenseTypes().subscribe((data) => {
+        this.expenseTypes = data;
+      });
+
     });
 
-    this.expenseService.GetAllExpenseTypes().subscribe((data) => {
-      this.expenseTypes = data;
-    });
+
+
+
+
 
   }
 

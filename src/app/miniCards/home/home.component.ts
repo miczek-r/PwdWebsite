@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.homeId) {
-      this.homeService.GetHomeByUserId(this.homeId).subscribe((data) => {
+      this.homeService.GetHomeById(this.homeId).subscribe((data) => {
         this.home = data;
       });
     }
