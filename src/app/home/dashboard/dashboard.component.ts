@@ -1,3 +1,5 @@
+import { HomeUserInfoComponent } from './../home-user-info/home-user-info.component';
+import { HomeInfoComponent } from './../home-info/home-info.component';
 import { Router } from '@angular/router';
 import { HomeService } from 'src/app/_services/_homeService/home.service';
 import { UserService } from './../../_services/_userService/user.service';
@@ -12,7 +14,7 @@ import { ExpenseService } from 'src/app/_services/_expenseService/expense.servic
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['../../dashboardStyles.scss']
 })
 export class HomeDashboardComponent implements OnInit {
   userId: number;
@@ -20,6 +22,15 @@ export class HomeDashboardComponent implements OnInit {
   tempUser: User;
   expenses: Expense[];
   saldo = 0;
+  dialogs =
+    {
+      homeInfo: HomeInfoComponent
+    };
+
+
+
+
+
   constructor(
     private authService: AuthService,
     private expenseService: ExpenseService,
@@ -36,26 +47,27 @@ export class HomeDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getData();
   }
-
   getData(): void {
-    this.authService.update();
-    this.tempUser = this.authService.getUser();
-    if (this.tempUser.homeId === null) {
-      this.router.navigateByUrl("");
-    }
-    this.homeService.GetHomeUsers(this.tempUser.homeId).subscribe((data) => {
-      this.user = data;
-      this.user.forEach(element => {
-        this.expenseService.GetHomeExpenses(this.tempUser.homeId).subscribe((homeExpenses) => {
-          this.expenses = homeExpenses;
+    this.authService.update().then(result => {
+      this.tempUser = this.authService.getUser();
+      if (this.tempUser.homeId === null) {
+        this.router.navigateByUrl("");
+      }
+      this.homeService.GetHomeUsers(this.tempUser.homeId).subscribe((data) => {
+        this.user = data;
+        this.user.forEach(element => {
+          this.expenseService.GetHomeExpenses(this.tempUser.homeId).subscribe((homeExpenses) => {
+            this.expenses = homeExpenses;
+          });
         });
       });
+      if (this.user) {
+        this.user.forEach(element => {
+          this.saldo += element.saldo;
+        });
+      }
     });
-    if (this.user) {
-      this.user.forEach(element => {
-        this.saldo += element.saldo;
-      });
-    }
+
 
 
   }
@@ -66,6 +78,24 @@ export class HomeDashboardComponent implements OnInit {
     this.tempUser.homeId = null;
     this.userService.UpdateUser(this.tempUser).subscribe((data) => {
       this.router.navigateByUrl("");
+    });
+  }
+
+  openDialog(dialog: string): void {
+
+
+
+    const dialogRef = this.dialog.open(
+      this.dialogs[dialog]
+      , {
+        width: '500px',
+        data: { homeId: this.tempUser.homeId }
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'reload') {
+        window.location.reload();
+      }
     });
   }
 

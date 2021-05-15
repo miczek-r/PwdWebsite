@@ -6,15 +6,17 @@ import { UserDashboardComponent } from './user/dashboard/dashboard.component';
 import { SaldoComponent } from './miniCards/saldo/saldo.component';
 import { AuthGuardService as AuthGuard } from './_services/_authGuard/auth-guard.service';
 import { HomeDashboardComponent } from './home/dashboard/dashboard.component';
-import { ExpenseListComponent } from './user/expense-list/expense-list.component';
+import { UserExpenseListComponent } from './user/expense-list/expense-list.component';
+import { HomeExpenseListComponent } from './home/expense-list/expense-list.component';
 
 const routes: Routes = [
   { path: 'auth', component: AuthorizationComponent },
   {path: 'activate/:token', component: ConfirmEmailComponent},
   { path: 'aasdasd/asdasd', component: SaldoComponent },
   { path: 'user/dashbord', component: UserDashboardComponent, canActivate: [AuthGuard] },
-  { path: 'user/operations', component: ExpenseListComponent, canActivate: [AuthGuard]},
+  { path: 'user/operations', component: UserExpenseListComponent, canActivate: [AuthGuard]},
   { path: 'home/dashboard', component: HomeDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'home/operations', component: HomeExpenseListComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: '/user/dashbord', pathMatch: 'full' },
   { path: '**', redirectTo: '/user/dashbord' }
 ];

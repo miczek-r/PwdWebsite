@@ -8,17 +8,6 @@ $neutral: #ffc02a;
 mat-card {
   border-radius: 20px;
   cursor: pointer;
-  transition: 400ms;
-  &:not(.dashbord-main):hover {
-    &.primary {
-      background-color: lighten($color: $primary-color, $amount: 10);
-    }
-    background-color: darken($color: $background-color, $amount: 10);
-    transition: 400ms;
-    .logout * {
-      fill: red;
-    }
-  }
 }
 
 .dashbord-main {
@@ -93,5 +82,67 @@ mat-card {
 @media only screen and (max-width: 958px) {
   .sm {
     padding-right: 0 !important;
+  }
+}
+
+//----------------
+
+.clicable {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+  color:black !important;
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 5px;
+    right: 5px;
+    color:black;
+    background:#4CA1A3;
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition: transform 0.7s ease-out;
+
+  }
+
+  &:hover:before {
+    transform: scale(50);
+  }
+}
+
+.clicable.dark{
+  &:before {
+      background: #FFE5E2;
+    }
+  }
+
+.go-arrow{
+  position:absolute;
+  font-size: 1rem;
+  top: 9px;
+  right: 9px;
+  font-weight: bold;
+  &.dark{
+    color:black;
+  }
+  color:white;
+}
+
+.icon{
+  background-image: radial-gradient(circle at center , #FFE5E2 50%, transparent 50%);
+        background-repeat: no-repeat;
+        transition: background-size .6s, color .6s;
+        background-size: 0 0;
+        background-position: 50% 50%;
+        border-radius: 30px;
+  &:hover{
+    background-size: 200% 200%;
   }
 }

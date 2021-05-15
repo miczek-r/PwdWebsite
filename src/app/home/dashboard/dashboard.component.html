@@ -110,117 +110,167 @@
   </svg>
   CASHBUDDY
 </div>
-<mat-card class="dashbord-main mat-elevation-z5">
-  <mat-grid-list cols="10" rowHeight="100px" gutterSize="1rem">
-    <mat-grid-tile colspan="3" rowspan="2">
-      <div class="grid">
-        <mat-card
-          [class.warning]="saldo < 0"
-          [class.neutral]="saldo == 0"
-          [class.good]="saldo > 0"
-        >
-          <app-saldo [user]="user"></app-saldo>
-        </mat-card>
-      </div>
-    </mat-grid-tile>
+<mat-card
+  fxLayout="row wrap"
+  fxLayout.lt-sm="column"
+  fxLayoutAlign="space-between stretch"
+  class="sm md dashbord-main mat-elevation-z5"
+  fxLayoutGap="2rem grid"
+>
+  <div
+    class="sm md lg"
+    fxFlex="60"
+    fxFlex.lt-lg="100"
+    fxLayout="row wrap"
+    fxLayoutGap="2rem grid"
+  >
+    <div fxFlex="50" fxFlex.lt-md="100">
+      <mat-card
+        class="clicable"
+        [class.warning]="saldo < 0"
+        [class.neutral]="saldo == 0"
+        [class.good]="saldo > 0"
+      >
+        <app-saldo [user]="user"></app-saldo>
+        <div class="go-arrow">
+          <mat-icon style="transform: scale(1.4)">keyboard_arrow_down</mat-icon>
+        </div>
+      </mat-card>
+    </div>
 
-    <mat-grid-tile colspan="3" rowspan="2">
-      <div class="grid">
-        <mat-card *ngIf="expenses">
-          <app-expenses [expenses]="expenses"></app-expenses>
-        </mat-card>
-      </div>
-    </mat-grid-tile>
+    <div fxFlex="50" fxFlex.lt-md="100" class="lg">
+      <mat-card *ngIf="expenses">
+        <app-expenses [expenses]="expenses"></app-expenses>
+      </mat-card>
+    </div>
 
-    <mat-grid-tile colspan="4" rowspan="1">
-      <div class="grid">
-        <mat-card
-          *ngIf="expenses"
-          class="pink"
-        >
-          <app-income [expenses]="expenses"></app-income>
-        </mat-card>
-      </div>
-    </mat-grid-tile>
+    <div fxFlex="66.6" fxFlex.lt-md="100">
+      <mat-card *ngIf="tempUser" class="home clicable" (click)="openDialog('homeInfo')">
+        <app-home [homeId]="tempUser.homeId"></app-home>
+        <div class="go-arrow">
+          <mat-icon style="transform: scale(1.4)">keyboard_arrow_down</mat-icon>
+        </div>
+      </mat-card>
+    </div>
 
-    <mat-grid-tile colspan="4" rowspan="3">
-      <div class="grid">
-        <mat-card class="primary" >
-          <app-profile-list [user]="user"></app-profile-list>
-        </mat-card>
-      </div>
-    </mat-grid-tile>
+    <div fxFlex="33.3" fxFlex.lt-md="100" class="lg">
+      <mat-card *ngIf="expenses">
+        <app-home-expenses
+          [expenses]="expenses"
+          [user]="user"
+        ></app-home-expenses>
+      </mat-card>
+    </div>
+  </div>
 
-    <mat-grid-tile colspan="4" rowspan="2">
-      <div class="grid">
-        <mat-card class="home">
-          <app-home [homeId]="tempUser.homeId"></app-home>
-        </mat-card>
-      </div>
-    </mat-grid-tile>
+  <div
+    class="sm md lg"
+    fxFlex="40"
+    fxFlex.lt-lg="100"
+    fxLayout="row wrap"
+    fxLayoutGap="2rem grid"
+  >
+    <div fxFlex="100">
+      <mat-card *ngIf="expenses" class="pink small clicable">
+        <app-income [expenses]="expenses"></app-income>
+        <div class="go-arrow">
+          <mat-icon style="transform: scale(1.4)">keyboard_arrow_down</mat-icon>
+        </div>
+      </mat-card>
+    </div>
 
-    <mat-grid-tile colspan="2" rowspan="2">
-      <div class="grid">
-        <mat-card *ngIf="expenses">
-          <app-home-expenses [expenses]="expenses" [user]="user"></app-home-expenses>
-        </mat-card>
-      </div>
-    </mat-grid-tile>
+    <div fxFlex="100">
+      <mat-card class="primary big">
+        <app-profile-list [user]="user"></app-profile-list>
+      </mat-card>
+    </div>
+  </div>
 
-    <mat-grid-tile colspan="5" rowspan="3">
-      <div class="grid">
-          <mat-card *ngIf="expenses" routerLink="/user/operations" routerLinkActive="active">
-            <app-diagram [expenses]="expenses"></app-diagram>
-          </mat-card>
-      </div>
-    </mat-grid-tile>
+  <div
+    class="sm md lg"
+    fxFlex="100"
+    fxFlex.lt-lg="100"
+    fxLayout="row wrap"
+    fxLayoutGap="2rem grid"
+  >
+    <div fxFlex="50" fxFlex.lt-lg="100">
+      <mat-card
+        class="big clicable dark"
+        *ngIf="expenses"
+        routerLink="/home/operations"
+        routerLinkActive="active"
+      >
+        <app-diagram [expenses]="expenses"></app-diagram>
+        <div class="go-arrow dark">
+          <mat-icon style="transform: scale(1.4)">keyboard_arrow_down</mat-icon>
+        </div>
+      </mat-card>
+    </div>
 
-    <mat-grid-tile colspan="3" rowspan="2">
-      <div class="grid">
+    <div
+      class="sm md lg"
+      height="100px"
+      fxFlex="50"
+      fxFlex.lt-lg="100"
+      fxLayout="row wrap"
+      fxLayoutGap="2rem grid"
+    >
+      <div fxFlex="60" fxFlex.lt-md="100">
         <mat-card *ngIf="expenses">
           <app-calendar [expenses]="expenses"></app-calendar>
         </mat-card>
       </div>
-    </mat-grid-tile>
 
-    <mat-grid-tile colspan="1" rowspan="1">
-      <div class="grid logout">
-        <mat-card>
-          <mat-icon>add</mat-icon>
-        </mat-card>
+      <div
+        fxFlex="40"
+        fxFlex.lt-md="100"
+        fxLayout="rows wrap"
+        fxLayoutGap="2rem grid"
+        style="height: 232px"
+        class="sm md lg"
+      >
+        <div fxFlex="50" class="logout">
+          <div class="grid logout">
+            <mat-card class="small centered icon">
+              <mat-icon>add</mat-icon>
+            </mat-card>
+          </div>
+        </div>
+
+        <div fxFlex="50" class="lg">
+          <div class="grid logout">
+            <mat-card class="small centered icon">
+              <mat-card-content>
+                <mat-icon>settings</mat-icon>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+
+        <div fxFlex="50" class="logout">
+          <div class="grid logout">
+            <mat-card class="small centered icon" (click)="leave()">
+              <mat-card-content>
+                <app-logout></app-logout>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+
+        <div fxFlex="50" class="lg logout">
+          <div class="grid logout">
+            <mat-card
+              class="small centered icon"
+              routerLink="/user/dashboard"
+              routerLinkActive="active"
+            >
+              <mat-card-content>
+                <mat-icon>keyboard_arrow_left</mat-icon>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
       </div>
-    </mat-grid-tile>
-
-
-
-    <mat-grid-tile colspan="1" rowspan="1">
-      <div class="grid">
-        <mat-card>
-          <mat-card-content>
-            <mat-icon>settings</mat-icon>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </mat-grid-tile>
-
-
-    <mat-grid-tile colspan="1" rowspan="1">
-      <div class="grid logout">
-        <mat-card (click)="leave()">
-          <mat-card-content>
-            <app-logout></app-logout>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="1" rowspan="1">
-      <div class="grid logout">
-        <mat-card routerLink="/user/dashboard" routerLinkActive="active">
-          <mat-card-content>
-            <mat-icon>keyboard_arrow_left</mat-icon>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </mat-grid-tile>
-  </mat-grid-list>
+    </div>
+  </div>
 </mat-card>

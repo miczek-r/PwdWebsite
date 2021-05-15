@@ -14,14 +14,14 @@ import { EditUserComponent } from '../edit-user/edit-user.component';
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['../../dashboardStyles.scss']
 })
 export class UserDashboardComponent implements OnInit {
 
 
 
   userId: number;
-  user: User[] = [];
+  user: User[] = new Array<User>();
   expenses: Expense[];
   home: Home;
   constructor(private authService: AuthService, private expenseService: ExpenseService, public dialog: MatDialog) { }
@@ -44,12 +44,13 @@ export class UserDashboardComponent implements OnInit {
   }
 
   getData(): void {
-    this.authService.update();
-    this.user.push(this.authService.getUser());
-    this.expenseService.GetUserExpenses(this.user[0].userId).subscribe((data) => {
-      this.expenses = data;
+    this.authService.update().then(result => {
+      this.user.push(this.authService.getUser());
+      this.expenseService.GetUserExpenses(this.user[0].userId).subscribe((data) => {
+        this.expenses = data;
+      });
     });
-    console.log(this.user);
+
   }
 
   logout(): void {

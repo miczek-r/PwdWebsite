@@ -112,6 +112,7 @@
 </div>
 
 <mat-card
+  *ngIf="user[0]"
   fxLayout="row wrap"
   fxLayout.lt-sm="column"
   fxLayoutGap="2rem grid"
@@ -128,12 +129,16 @@
     fxFlexOrder.lt-lg="2"
   >
     <mat-card
+      class="clicable"
       [class.warning]="user[0].saldo < 0"
       [class.neutral]="user[0].saldo == 0"
       [class.good]="user[0].saldo > 0"
       (click)="openDialog('saldo')"
     >
       <app-saldo [user]="user"></app-saldo>
+      <div class="go-arrow">
+        <mat-icon style="transform: scale(1.4)">keyboard_arrow_down</mat-icon>
+      </div>
     </mat-card>
   </div>
 
@@ -145,19 +150,35 @@
     fxFlexOrder="2"
     fxFlexOrder.lt-lg="3"
   >
-    <mat-card *ngIf="expenses" (click)="openDialog('addExpense')">
+    <mat-card
+      class="clicable dark"
+      *ngIf="expenses"
+      (click)="openDialog('addExpense')"
+    >
       <app-expenses [expenses]="expenses"></app-expenses>
-    </mat-card>
-  </div>
-
-  <div class="sm md lg" fxFlex="40" fxFlex.lt-lg="100" fxFlexOrder="3" fxFlexOrder.lt-lg="1">
-    <mat-card class="primary" (click)="openDialog('userInfo')">
-      <app-profile [user]="user"></app-profile>
+      <div class="go-arrow dark">
+        <mat-icon style="transform: scale(1.4)">keyboard_arrow_down</mat-icon>
+      </div>
     </mat-card>
   </div>
 
   <div
-  class="sm md lg"
+    class="sm md lg"
+    fxFlex="40"
+    fxFlex.lt-lg="100"
+    fxFlexOrder="3"
+    fxFlexOrder.lt-lg="1"
+  >
+    <mat-card class="primary clicable" (click)="openDialog('userInfo')">
+      <app-profile [user]="user"></app-profile>
+      <div class="go-arrow">
+        <mat-icon style="transform: scale(1.4)">keyboard_arrow_down</mat-icon>
+      </div>
+    </mat-card>
+  </div>
+
+  <div
+    class="sm md lg"
     fxFlex="50"
     fxFlex.lt-lg="100"
     fxLayout="column"
@@ -166,24 +187,29 @@
     fxFlexOrder="4"
   >
     <div
-    class="sm lg"
+      class="sm lg"
       fxFlex="100"
       fxLayout="row"
       fxLayout.lt-md="column"
       fxLayoutGap="2rem grid"
     >
-      <div class=" nd" fxFlex="80" fxFlex.lt-md="100">
+      <div class="nd" fxFlex="80" fxFlex.lt-md="100">
         <mat-card
           *ngIf="expenses"
-          class="pink small"
+          class="pink small clicable"
           (click)="openDialog('addIncome')"
         >
           <app-income [expenses]="expenses"></app-income>
+          <div class="go-arrow">
+            <mat-icon style="transform: scale(1.4)"
+              >keyboard_arrow_down</mat-icon
+            >
+          </div>
         </mat-card>
       </div>
 
-      <div class=" md nd" fxFlex="20" fxFlex.lt-md="100">
-        <mat-card class="small centered">
+      <div class="md nd" fxFlex="20" fxFlex.lt-md="100">
+        <mat-card class="small centered icon">
           <mat-icon
             matBadge="10"
             matBadgePosition="after"
@@ -196,18 +222,21 @@
     </div>
     <div class="sm md lg" fxFlex="100">
       <mat-card
-        class="big"
+        class="big clicable dark"
         *ngIf="expenses"
         routerLink="/user/operations"
         routerLinkActive="active"
       >
         <app-diagram [expenses]="expenses"></app-diagram>
+        <div class="go-arrow dark">
+          <mat-icon style="transform: scale(1.4)">keyboard_arrow_down</mat-icon>
+        </div>
       </mat-card>
     </div>
   </div>
 
   <div
-  class="sm md"
+    class="sm md"
     fxFlex="50"
     fxFlex.lt-lg="100"
     fxLayout="row wrap"
@@ -216,11 +245,18 @@
     fxFlexOrder="5"
   >
     <div class="sm" fxFlex="40" fxFlex.lt-md="100">
-      <mat-card *ngIf="expenses" (click)="openDialog('expenseLimit')">
+      <mat-card
+        *ngIf="expenses"
+        class="clicable dark"
+        (click)="openDialog('expenseLimit')"
+      >
         <app-target-progress
           [expenses]="expenses"
           [limit]="user[0].expenseLimit"
         ></app-target-progress>
+        <div class="go-arrow dark">
+          <mat-icon style="transform: scale(1.4)">keyboard_arrow_down</mat-icon>
+        </div>
       </mat-card>
     </div>
 
@@ -232,15 +268,18 @@
 
     <div class="sm" fxFlex="80" fxFlex.lt-md="100">
       <mat-card
-        class="home medium"
+        class="home medium clicable"
         [routerLink]="user[0].homeId != null ? '/home/dashboard' : null"
         routerLinkActive="active"
       >
         <app-home [homeId]="user[0].homeId"></app-home>
+        <div class="go-arrow">
+          <mat-icon style="transform: scale(1.4)">keyboard_arrow_down</mat-icon>
+        </div>
       </mat-card>
     </div>
     <div
-    class="sm md lg"
+      class="sm md lg"
       fxFlex="20"
       fxFlex.lt-md="100"
       fxLayout="row wrap"
@@ -248,7 +287,7 @@
       fxLayoutGap.lt-sm="1rem grid"
     >
       <div class="md lg" fxFlex="100" fxFlex.lt-md="50">
-        <mat-card class="small centered" (click)="openDialog('editUser')">
+        <mat-card class="small centered icon" (click)="openDialog('editUser')">
           <mat-card-content>
             <mat-icon>settings</mat-icon>
           </mat-card-content>
@@ -257,7 +296,7 @@
 
       <div class="sm md lg" fxFlex="100" fxFlex.lt-md="50">
         <div class="grid logout">
-          <mat-card class="small centered" (click)="logout()">
+          <mat-card class="small centered icon" (click)="logout()">
             <mat-card-content>
               <app-logout></app-logout>
             </mat-card-content>

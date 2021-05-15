@@ -13,7 +13,7 @@ import { ExpenseService } from 'src/app/_services/_expenseService/expense.servic
   templateUrl: './expense-list.component.html',
   styleUrls: ['./expense-list.component.scss']
 })
-export class UserExpenseListComponent implements AfterViewInit {
+export class HomeExpenseListComponent {
   displayedColumns: string[] = ['name', 'expenseType', 'date', 'amount'];
   dataSource: MatTableDataSource<Expense>;
 
@@ -33,7 +33,7 @@ export class UserExpenseListComponent implements AfterViewInit {
   constructor(private authService: AuthService, private expenseService: ExpenseService) {
     this.user = this.authService.getUser();
 
-    this.expenseService.GetUserExpenses(this.user.userId).subscribe((data) => {
+    this.expenseService.GetHomeExpenses(this.user.homeId).subscribe((data) => {
       this.expenses = data;
       this.dataSource = new MatTableDataSource(this.expenses);
       this.dataSource.paginator = this.paginator;

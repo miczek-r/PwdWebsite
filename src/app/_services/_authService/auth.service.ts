@@ -42,11 +42,11 @@ export class AuthService {
 
   }
 
-  update(): void {
-    const user: User = this.getUser();
-    console.log(user);
-    this.http.get<User>(environment.webAPI + '/User/' + user.userId).subscribe(result => {
-      this.setUser(result);
+  async update(): Promise<void> {
+    let user = this.getUser();
+    window.sessionStorage.removeItem(USER_KEY);
+    await this.http.get<User>(environment.webAPI + '/User/' + user.userId).toPromise().then(result =>{
+      window.sessionStorage.setItem(USER_KEY, JSON.stringify(result));
     }
     );
   }

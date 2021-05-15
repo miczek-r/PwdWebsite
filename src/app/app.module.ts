@@ -1,3 +1,4 @@
+import { HomeExpenseListComponent } from './home/expense-list/expense-list.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -24,7 +25,7 @@ import { IncomeComponent } from './miniCards/income/income.component';
 import { CalendarComponent } from './miniCards/calendar/calendar.component';
 import { HomeComponent } from './miniCards/home/home.component';
 import { ExpenseLimitComponent } from './user/expense-limit/expense-limit.component';
-import { ExpenseListComponent } from './user/expense-list/expense-list.component';
+import { UserExpenseListComponent } from './user/expense-list/expense-list.component';
 import { AddExpenseComponent } from './user/add-expense/add-expense.component';
 import { AddIncomeComponent } from './user/add-income/add-income.component';
 import { UserInfoComponent } from './user/user-info/user-info.component';
@@ -35,6 +36,12 @@ import { HomeExpensesComponent } from './miniCards/home-expenses/home-expenses.c
 import { SetSaldoComponent } from './user/set-saldo/set-saldo.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HomeSaldoComponent } from './home/home-saldo/home-saldo.component';
+import { HomeInfoComponent } from './home/home-info/home-info.component';
+import { HomeUserInfoComponent } from './home/home-user-info/home-user-info.component';
+import { AddToHomeComponent } from './home/add-to-home/add-to-home.component';
+import { EditHomeComponent } from './home/edit-home/edit-home.component';
+import { HomeIncomeComponent } from './home/home-income/home-income.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +62,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HomeComponent,
     ExpenseLimitComponent,
     UserDashboardComponent,
-    ExpenseListComponent,
+    UserExpenseListComponent,
+    HomeExpenseListComponent,
     AddExpenseComponent,
     AddIncomeComponent,
     UserInfoComponent,
@@ -63,7 +71,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ProfileListComponent,
     HomeExpensesComponent,
     EditUserComponent,
-    SetSaldoComponent
+    SetSaldoComponent,
+    HomeSaldoComponent,
+    HomeInfoComponent,
+    HomeIncomeComponent,
+    HomeUserInfoComponent,
+    AddToHomeComponent,
+    EditHomeComponent
   ],
   imports: [
     BrowserModule,
