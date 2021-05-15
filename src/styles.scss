@@ -19,13 +19,16 @@
 
 html,
 body {
+  top:0 !important;
   height: 100%;
   margin:0;
-  padding:1rem;
-  overflow:hidden;
+  overflow-x:hidden;
   background-color: rgba(208, 237, 247, 0.3);
 }
 
+html{
+  overflow:hidden !important;
+}
 
 body {
   font-family: 'CaviarDreams',Roboto, "Helvetica Neue", sans-serif ;
@@ -45,7 +48,32 @@ body {
     }
 }
 
+
+@media only screen and (max-width:600px) {
+  .logo{
+    font-size:  4rem;
+  }
+}
+
+
+@media only screen and (max-width:400px) {
+
+  .logo{
+    font-size: 2.5rem;
+  }
+  svg{
+    height: 50px;
+  }
+}
+
+
 mat-form-field{
   width: 100%;
+}
+
+.mat-badge-content{
+  transform:scale(0.6) !important;
+  top: -7px !important;
+  right: -7px !important;
 }
 

@@ -20,14 +20,13 @@ export class ExpenseLimitComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.user = this.data.user;
   }
 
   onSubmit(): void{
-    this.user = this.data.user;
-    this.user.expenseLimit = this.form.expenseLimit;
     this.userService.UpdateUser(this.user).subscribe(
       data => {
-        this.dialogRef.close();
+        this.dialogRef.close('reload');
       },
       err => {
         this.snackBar.open(err, 'Close', { duration: 2000, });

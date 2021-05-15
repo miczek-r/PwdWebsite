@@ -23,7 +23,9 @@ $primary-color: #7265fa;
 img {
   margin: 0 2rem 0 1rem;
   border-radius: 50%;
+
 }
+
 h1 {
   color: white;
   font-weight: 500;
@@ -46,9 +48,10 @@ h1 {
   }
 }
 
-h3 {
+h3,h2 {
   color: white;
   text-shadow: 1px;
+  margin:0;
 }
 .mat-display-1,
 .mat-display-2 {
@@ -88,4 +91,14 @@ mat-card {
   height: -webkit-fill-available;
   align-items: center;
   justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  img{
+    display:none;
+  }
+  .card{
+    text-align: center;
+    justify-content: center;
+  }
 }

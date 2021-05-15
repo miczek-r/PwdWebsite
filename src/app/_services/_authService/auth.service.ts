@@ -27,6 +27,11 @@ export class AuthService {
 
   }
 
+
+  ConfirmEmail(token: string): Observable<any> {
+    return this.http.put(AUTH_API + '/ConfirmEmail/' + token, token);
+  }
+
   register(user): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       username: user.username,
@@ -38,13 +43,16 @@ export class AuthService {
   }
 
   update(): void {
-    this.http.get<User>(environment.webAPI + '/User').subscribe(result => {
-      this.setUser(result[0]);
+    const user: User = this.getUser();
+    console.log(user);
+    this.http.get<User>(environment.webAPI + '/User/' + user.userId).subscribe(result => {
+      this.setUser(result);
     }
     );
   }
 
   logout(): void {
+    window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.clear();
   }
 

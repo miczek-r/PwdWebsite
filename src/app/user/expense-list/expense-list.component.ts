@@ -22,6 +22,14 @@ export class ExpenseListComponent implements AfterViewInit {
   expenses: Expense[];
   expenseTypes: ExpenseType[];
   user: User;
+
+  filteredValues =
+    {
+      nameOfExpense: '',
+      typeOfExpenseId: '',
+    };
+
+
   constructor(private authService: AuthService, private expenseService: ExpenseService) {
     this.user = this.authService.getUser();
 
@@ -29,7 +37,19 @@ export class ExpenseListComponent implements AfterViewInit {
       this.expenses = data;
       this.dataSource = new MatTableDataSource(this.expenses);
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sortingDataAccessor = (item, property) => {
+        switch (property) {
+          case 'name': return item.nameOfExpense;
+          case 'expenseType': return this.expenseTypes[item.typeOfExpenseId];
+          case 'date': return item.expenseDate;
+          default: return item[property];
+        }
+      };
       this.dataSource.sort = this.sort;
+      this.dataSource.filterPredicate =
+        (exp: Expense, filter: string) =>
+          !filter || (exp.typeOfExpenseId === JSON.parse(filter)['typeOfExpenseId'] || JSON.parse(filter)['typeOfExpenseId'].toString() === '')
+          && (JSON.parse(filter)['nameOfExpense'] === '' || exp.nameOfExpense.includes(JSON.parse(filter)['nameOfExpense']));
     });
 
     this.expenseService.GetAllExpenseTypes().subscribe((data) => {
@@ -40,12 +60,25 @@ export class ExpenseListComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
+  }
 
+  applyFilterSelect(event: string): void {
+
+    this.filteredValues["typeOfExpenseId"] = event ? event : '';
+    this.dataSource.filter = JSON.stringify(this.filteredValues);
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+    console.log(this.dataSource.filter);
   }
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+
+    this.filteredValues["nameOfExpense"] = filterValue.trim().toLowerCase();
+    this.dataSource.filter = JSON.stringify(this.filteredValues);
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();

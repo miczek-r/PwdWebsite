@@ -8,14 +8,16 @@ import { HomeService } from 'src/app/_services/_homeService/home.service';
   styleUrls: ['../minicards-styles.scss']
 })
 export class HomeComponent implements OnInit {
-  @Input() userId: number;
+  @Input() homeId: number;
   home: Home;
   constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
-    this.homeService.GetHomeByUserId(this.userId).subscribe((data) => {
-      this.home = data;
-    });
+    if (this.homeId) {
+      this.homeService.GetHomeByUserId(this.homeId).subscribe((data) => {
+        this.home = data;
+      });
+    }
   }
 
 }

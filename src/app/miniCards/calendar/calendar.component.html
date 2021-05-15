@@ -5,7 +5,7 @@
       class="textCent"
       [class]="expense.typeOfExpenseId == 1 ? 'green' : 'red'"
       matTooltipPosition="above"
-      [matTooltip]="(expense.typeOfExpenseId == 1 ? '+':'-')+ expense.amount "
+      [matTooltip]="(expense.typeOfExpenseId == 1 ? '+':'-')+ expense.amount | number "
       [matTooltipClass]="expense.typeOfExpenseId == 1 ? 'example-tooltip-green' : 'example-tooltip-red'"
     >
       <h1 class="noMargin">{{ expense.day | date: "dd" }}</h1>

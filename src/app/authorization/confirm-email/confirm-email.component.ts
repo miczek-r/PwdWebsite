@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/_services/_authService/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from './../../_services/_userService/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,10 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfirmEmailComponent implements OnInit {
 
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
+  constructor(private authService: AuthService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.userService.ConfirmEmail(this.route.snapshot.params.token).subscribe(
+    this.authService.ConfirmEmail(this.route.snapshot.params.token).subscribe(
       data => {
         console.log(data);
       },

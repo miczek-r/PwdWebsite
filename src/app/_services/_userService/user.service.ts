@@ -14,10 +14,6 @@ export class UserService {
     return this.http.post(environment.webAPI + '/User', user);
   }
 
-  ConfirmEmail(token: string): Observable<any> {
-    return this.http.put(environment.webAPI + '/User/ConfirmEmail/' + token, token);
-  }
-
   GetPasswordRestorationToken(email: string): Observable<any> {
     return this.http.put(environment.webAPI + '/User/GetPasswordRestorationToken/' + email, email);
   }

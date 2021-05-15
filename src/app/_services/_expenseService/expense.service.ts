@@ -15,10 +15,15 @@ export class ExpenseService {
   GetUserExpenses(id: number): Observable<Expense[]> {
     return this.http.get<Expense[]>(environment.webAPI + '/Expense/UserId/' + id);
   }
+  GetHomeExpenses(id: number): Observable<Expense[]> {
+    return this.http.get<Expense[]>(environment.webAPI + '/Expense/HomeId/' + id);
+  }
+
   GetAllExpenseTypes(): Observable<ExpenseType[]> {
     return this.http.get<ExpenseType[]>(environment.webAPI + '/Expense/GetAllExpenseTypes');
   }
   AddExpense(expense: Expense): Observable<any> {
     return this.http.post(environment.webAPI + '/Expense/', expense);
   }
+
 }

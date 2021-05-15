@@ -7,9 +7,6 @@ $neutral: #ffc02a;
 
 mat-card {
   border-radius: 20px;
-  display: block;
-  width: -webkit-fill-available;
-  height: -webkit-fill-available;
   cursor: pointer;
   transition: 400ms;
   &:not(.dashbord-main):hover {
@@ -24,22 +21,12 @@ mat-card {
   }
 }
 
-mat-grid-tile {
-  padding: 1rem;
-}
-
-.grid {
-  height: -webkit-fill-available;
-  width: -webkit-fill-available;
-  padding: 2rem;
-}
-
 .dashbord-main {
-  max-width: 1200px;
-  margin: auto;
-  padding-bottom: 2rem;
+  max-width: 1300px;
+  margin: auto !important;
   height: fit-content;
-
+  padding: 2rem;
+  max-height: fit-content !important;
   //border: 1px solid black;
 }
 
@@ -59,12 +46,52 @@ mat-grid-tile {
 .pink {
   background-color: #f5aab6;
 }
-.home{
-  background-color: #99C5F0;
+.home {
+  background-color: #99c5f0;
 }
 
-.mat-icon{
-  font-size: 40px;
+mat-icon {
+  transform: scale(2);
 }
 
+mat-card {
+  height: 168px;
+  &.small {
+    height: 68px;
+  }
+  &.big {
+    height: fit-content;
+    max-height: 268px;
+  }
+  &.medium{
+    height: 200px;
+  }
+}
 
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 1278px) {
+  .lg {
+    padding-right: 0 !important;
+  }
+}
+
+.nd{
+  height: fit-content;
+}
+
+@media only screen and (max-width: 1278px) and (min-width: 958px) {
+  .md {
+    padding-right: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 958px) {
+  .sm {
+    padding-right: 0 !important;
+  }
+}

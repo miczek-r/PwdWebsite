@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './authorization/login/login.component';
-import { DashboardComponent } from './user/dashboard/dashboard.component';
+import { UserDashboardComponent } from './user/dashboard/dashboard.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,12 +29,18 @@ import { AddExpenseComponent } from './user/add-expense/add-expense.component';
 import { AddIncomeComponent } from './user/add-income/add-income.component';
 import { UserInfoComponent } from './user/user-info/user-info.component';
 import { ConfirmEmailComponent } from './authorization/confirm-email/confirm-email.component';
+import { HomeDashboardComponent } from './home/dashboard/dashboard.component';
+import { ProfileListComponent } from './miniCards/profile-list/profile-list.component';
+import { HomeExpensesComponent } from './miniCards/home-expenses/home-expenses.component';
+import { SetSaldoComponent } from './user/set-saldo/set-saldo.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
+    HomeDashboardComponent,
     AuthorizationComponent,
     RemindPasswordComponent,
     RegisterComponent,
@@ -48,12 +54,16 @@ import { ConfirmEmailComponent } from './authorization/confirm-email/confirm-ema
     CalendarComponent,
     HomeComponent,
     ExpenseLimitComponent,
-    DashboardComponent,
+    UserDashboardComponent,
     ExpenseListComponent,
     AddExpenseComponent,
     AddIncomeComponent,
     UserInfoComponent,
-    ConfirmEmailComponent
+    ConfirmEmailComponent,
+    ProfileListComponent,
+    HomeExpensesComponent,
+    EditUserComponent,
+    SetSaldoComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +73,8 @@ import { ConfirmEmailComponent } from './authorization/confirm-email/confirm-ema
     LayoutModule,
     FormsModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

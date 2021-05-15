@@ -29,7 +29,7 @@ export class AddIncomeComponent implements OnInit {
     this.form['typeOfExpenseId'] = 1;
     this.expenseService.AddExpense(this.form).subscribe(
       data => {
-        this.dialogRef.close();
+        this.dialogRef.close("reload");
       },
       err => {
         this.snackBar.open(err, 'Close', { duration: 2000, });
