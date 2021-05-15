@@ -59,7 +59,7 @@ export class HomeDashboardComponent implements OnInit {
     this.authService.update().then(result => {
       this.tempUser = this.authService.getUser();
       if (this.tempUser.homeId === null) {
-        this.router.navigateByUrl("");
+        this.router.navigateByUrl('');
       }
       this.homeService.GetHomeUsers(this.tempUser.homeId).subscribe((data) => {
         this.user = data;
@@ -84,7 +84,7 @@ export class HomeDashboardComponent implements OnInit {
 
   leave(): void {
     this.userService.LeaveHome(this.tempUser.userId).subscribe((data) => {
-      this.router.navigateByUrl("");
+      this.router.navigateByUrl('');
     });
   }
 

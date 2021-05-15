@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -13,8 +14,8 @@ import { ExpenseService } from 'src/app/_services/_expenseService/expense.servic
   templateUrl: './expense-list.component.html',
   styleUrls: ['./expense-list.component.scss']
 })
-export class UserExpenseListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['name', 'expenseType', 'date', 'amount'];
+export class UserExpenseListComponent {
+  displayedColumns: string[] = ['name', 'expenseType', 'date', 'amount', 'delete'];
   dataSource: MatTableDataSource<Expense>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,7 +31,7 @@ export class UserExpenseListComponent implements AfterViewInit {
     };
 
 
-  constructor(private authService: AuthService, private expenseService: ExpenseService) {
+  constructor(private authService: AuthService, private expenseService: ExpenseService, private snackBar: MatSnackBar) {
     this.user = this.authService.getUser();
 
     this.expenseService.GetUserExpenses(this.user.userId).subscribe((data) => {
@@ -57,27 +58,21 @@ export class UserExpenseListComponent implements AfterViewInit {
     });
 
   }
-
-  ngAfterViewInit(): void {
-
-  }
-
   applyFilterSelect(event: string): void {
 
-    this.filteredValues["typeOfExpenseId"] = event ? event : '';
+    this.filteredValues['typeOfExpenseId'] = event ? event : '';
     this.dataSource.filter = JSON.stringify(this.filteredValues);
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-    console.log(this.dataSource.filter);
   }
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
 
 
-    this.filteredValues["nameOfExpense"] = filterValue.trim().toLowerCase();
+    this.filteredValues['nameOfExpense'] = filterValue.trim().toLowerCase();
     this.dataSource.filter = JSON.stringify(this.filteredValues);
 
     if (this.dataSource.paginator) {
@@ -91,5 +86,13 @@ export class UserExpenseListComponent implements AfterViewInit {
       return this.expenseTypes.find(a => a.typeOfExpenseId === id).name;
     }
     return null;
+  }
+
+  deleteExpense(expenseId: number): void {
+    this.expenseService.deleteExpense(expenseId).subscribe((data) => {
+      location.reload();
+    }, err => {
+      this.snackBar.open(err, 'Close', { duration: 2000, });
+    });
   }
 }

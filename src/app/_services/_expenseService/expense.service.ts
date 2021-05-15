@@ -26,4 +26,8 @@ export class ExpenseService {
     return this.http.post(environment.webAPI + '/Expense/', expense);
   }
 
+  deleteExpense(expenseId: number): Observable<any> {
+    return this.http.delete(environment.webAPI + '/Expense/' + expenseId);
+  }
+
 }

@@ -24,12 +24,10 @@ export class HomeExpensesComponent implements OnInit {
   constructor(private expenseService: ExpenseService) { }
 
   ngOnInit(): void {
-    console.log(this.expenses);
     const now = new Date();
     now.setMonth(now.getMonth() - 1);
     const afterdate = new Date();
     this.expenses = this.expenses.filter(a => new Date(a.expenseDate) > now && new Date(a.expenseDate) <= afterdate);
-    console.log(this.expenses);
 
 
     this.user.forEach(user => {
@@ -42,16 +40,5 @@ export class HomeExpensesComponent implements OnInit {
       });
       this.doughnutChartData[0].push(this.userExpense);
     });
-
-
-  }
-
-  // events
-  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
-
-  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
   }
 }

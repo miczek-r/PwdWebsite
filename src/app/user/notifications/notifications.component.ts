@@ -25,7 +25,7 @@ export class NotificationsComponent implements AfterViewInit {
     this.notifications = data.notifications;
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit(): void {
     this.notifications.forEach(element => {
       this.notificationService.MakeRead(element.notificationId).subscribe(
         data => {
@@ -38,7 +38,7 @@ export class NotificationsComponent implements AfterViewInit {
 
   }
 
-  deleteNotification(notiId: number) {
+  deleteNotification(notiId: number): void {
     this.notificationService.DeleteNotification(notiId).subscribe(
       data => {
         this.dialogRef.close('reload');
@@ -49,7 +49,7 @@ export class NotificationsComponent implements AfterViewInit {
     );
   }
 
-  joinHome(notiId:number, homeId: number) {
+  joinHome(notiId: number, homeId: number): void {
     this.userService.JoinHome(this.data.user.userId, homeId).subscribe(
       data => {
         this.deleteNotification(notiId);
@@ -57,7 +57,6 @@ export class NotificationsComponent implements AfterViewInit {
         this.dialogRef.close();
       },
       err => {
-        console.log(err);
         this.snackBar.open(err, 'Close', { duration: 2000, });
       }
     );

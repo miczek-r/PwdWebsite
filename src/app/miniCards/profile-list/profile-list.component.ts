@@ -14,7 +14,7 @@ export class ProfileListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  openUserDialog(id: number) {
+  openUserDialog(id: number): void {
 
     const dialogRef = this.dialog.open(
       HomeUserInfoComponent

@@ -1,5 +1,6 @@
 <h1>Zmień informacje o użytkowniku</h1>
 <form
+*ngIf="home"
   class="form"
   (ngSubmit)="f.form.valid && onSubmit()"
   #f="ngForm"

@@ -9,10 +9,10 @@ import { User } from 'src/app/models/user/user';
 })
 export class HomeSaldoComponent {
   displayedColumns: string[] = ['name', 'email', 'saldo'];
-  users:User[];
+  users: User[];
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-        this.users = data.users;
+    this.users = data.users;
   }
 }

@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/_services/_authService/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from './../../_services/_userService/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,19 +11,19 @@ import { Component, OnInit } from '@angular/core';
 export class RemindPasswordComponent implements OnInit {
   form: any = {};
   shakeIt = false;
-  constructor(private userService: UserService, private snackBar: MatSnackBar) { }
+  constructor(private authService: AuthService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
   remind(): void {
-    this.userService.GetPasswordRestorationToken(this.form.email).subscribe(
+    this.authService.GetPasswordRestorationToken(this.form.email).subscribe(
       data => {
         this.snackBar.open('Wysłano prośbę zmiany hasła. Sprawdź pocztę', 'Close', { duration: 2000, });
       },
       err => {
         this.shakeDialog();
-        this.snackBar.open('', 'Close', { duration: 2000, });
+        this.snackBar.open('Błąd przypominania hasła', 'Close', { duration: 2000, });
       }
     );
   }

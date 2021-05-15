@@ -18,13 +18,21 @@ export class HomeIncomeComponent {
   ) {
     this.users = data.users;
     this.expenses = data.expenses;
+
   }
 
   countIncoms(userId: number): number {
-      let sum = 0;
-      this.expenses.filter(x => x.ownerId === userId && x.typeOfExpenseId === 1).forEach(element => {
-        sum += element.amount;
+    let income = 0;
+    const date = new Date();
+    date.setMonth(date.getMonth() - 1);
+    const afterdate = new Date();
+    this.expenses = this.expenses.filter(a => new Date(a.expenseDate) > date
+      && new Date(a.expenseDate) <= afterdate && a.typeOfExpenseId === 1);
+    this.expenses.forEach(element => {
+      if (element.ownerId === userId) {
+        income += element.amount;
+      }
     });
-      return sum;
+    return income;
   }
 }

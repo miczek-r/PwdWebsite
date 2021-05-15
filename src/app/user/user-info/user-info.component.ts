@@ -10,13 +10,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UserInfoComponent implements OnInit {
 
-  user:User;
+  user: User;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.user = data.user;
-   }
+  }
 
 
   ngOnInit(): void {

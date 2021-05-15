@@ -31,11 +31,11 @@ export class HomeExpenseListComponent {
     };
 
 
-  constructor(private authService: AuthService, private expenseService: ExpenseService,    private router: Router) {
+  constructor(private authService: AuthService, private expenseService: ExpenseService, private router: Router) {
     this.authService.update().then(result => {
       this.user = this.authService.getUser();
       if (this.user.homeId === null) {
-        this.router.navigateByUrl("");
+        this.router.navigateByUrl('');
       }
       this.expenseService.GetHomeExpenses(this.user.homeId).subscribe((data) => {
         this.expenses = data;
@@ -52,7 +52,9 @@ export class HomeExpenseListComponent {
         this.dataSource.sort = this.sort;
         this.dataSource.filterPredicate =
           (exp: Expense, filter: string) =>
-            !filter || (exp.typeOfExpenseId === JSON.parse(filter)['typeOfExpenseId'] || JSON.parse(filter)['typeOfExpenseId'].toString() === '')
+            !filter ||
+            (exp.typeOfExpenseId === JSON.parse(filter)['typeOfExpenseId'] ||
+              JSON.parse(filter)['typeOfExpenseId'].toString() === '')
             && (JSON.parse(filter)['nameOfExpense'] === '' || exp.nameOfExpense.includes(JSON.parse(filter)['nameOfExpense']));
       });
 
@@ -69,26 +71,21 @@ export class HomeExpenseListComponent {
 
   }
 
-  ngAfterViewInit(): void {
-
-  }
-
   applyFilterSelect(event: string): void {
 
-    this.filteredValues["typeOfExpenseId"] = event ? event : '';
+    this.filteredValues['typeOfExpenseId'] = event ? event : '';
     this.dataSource.filter = JSON.stringify(this.filteredValues);
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-    console.log(this.dataSource.filter);
   }
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
 
 
-    this.filteredValues["nameOfExpense"] = filterValue.trim().toLowerCase();
+    this.filteredValues['nameOfExpense'] = filterValue.trim().toLowerCase();
     this.dataSource.filter = JSON.stringify(this.filteredValues);
 
     if (this.dataSource.paginator) {

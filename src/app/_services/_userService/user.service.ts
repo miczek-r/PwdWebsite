@@ -14,10 +14,6 @@ export class UserService {
     return this.http.post(environment.webAPI + '/User', user);
   }
 
-  GetPasswordRestorationToken(email: string): Observable<any> {
-    return this.http.put(environment.webAPI + '/User/GetPasswordRestorationToken/' + email, email);
-  }
-
   UpdateUser(user: User): Observable<any> {
     return this.http.put(environment.webAPI + '/User/', user);
   }
@@ -26,11 +22,11 @@ export class UserService {
     return this.http.get<User>(environment.webAPI + '/User/' + userId);
   }
 
-  JoinHome(userId: number, homeId: number) {
+  JoinHome(userId: number, homeId: number): Observable<any> {
     return this.http.put(environment.webAPI + '/User/JoinHome/' + userId + '/' + homeId, null);
   }
 
-  LeaveHome(userId: number) {
+  LeaveHome(userId: number): Observable<any> {
     return this.http.put(environment.webAPI + '/User/LeaveHome/' + userId, null);
   }
 }

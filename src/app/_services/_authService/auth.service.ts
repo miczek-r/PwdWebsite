@@ -43,9 +43,9 @@ export class AuthService {
   }
 
   async update(): Promise<void> {
-    let user = this.getUser();
+    const user = this.getUser();
     window.sessionStorage.removeItem(USER_KEY);
-    await this.http.get<User>(environment.webAPI + '/User/' + user.userId).toPromise().then(result =>{
+    await this.http.get<User>(environment.webAPI + '/User/' + user.userId).toPromise().then(result => {
       window.sessionStorage.setItem(USER_KEY, JSON.stringify(result));
     }
     );
@@ -66,5 +66,12 @@ export class AuthService {
   }
 
 
+  GetPasswordRestorationToken(email: string): Observable<any> {
+    return this.http.put(environment.webAPI + '/Authorize/GetPasswordRestorationToken/' + email, null);
+  }
+
+  ChangePassword(token: string, password: string): Observable<any> {
+    return this.http.put(environment.webAPI + '/Authorize/RestorePassword/' + token + '/' + password, null);
+  }
 
 }

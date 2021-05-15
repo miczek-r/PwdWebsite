@@ -8,6 +8,7 @@ import { User } from 'src/app/models/user/user';
 })
 export class SaldoComponent {
   saldo = 0;
+  // tslint:disable-next-line: variable-name
   private _user: User[];
 
 
@@ -21,7 +22,6 @@ export class SaldoComponent {
     }
   }
 
-  // Alan: Use input property getter
   get user(): User[] {
     return this._user;
   }

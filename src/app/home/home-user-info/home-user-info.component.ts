@@ -8,12 +8,12 @@ import { User } from 'src/app/models/user/user';
   styleUrls: ['./home-user-info.component.scss']
 })
 export class HomeUserInfoComponent implements OnInit {
-  user:User;
+  user: User;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.user = data.user;
-   }
+  }
 
   ngOnInit(): void {
   }

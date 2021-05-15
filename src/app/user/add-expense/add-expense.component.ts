@@ -34,10 +34,9 @@ export class AddExpenseComponent implements OnInit {
 
   onSubmit(): void {
     this.form['ownerId'] = this.data.user.userId;
-    console.log(this.form);
     this.expenseService.AddExpense(this.form).subscribe(
       data => {
-        this.dialogRef.close("reload");
+        this.dialogRef.close('reload');
       },
       err => {
         this.snackBar.open(err, 'Close', { duration: 2000, });

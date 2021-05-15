@@ -16,11 +16,17 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   returnUrl: string;
 
-  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService, private snackBar: MatSnackBar) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     if (this.authService.getUser()) {
       this.isLoggedIn = true;
+      this.RedirectToDashboard();
     }
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }

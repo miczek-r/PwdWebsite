@@ -22,7 +22,7 @@ export class AddToHomeComponent implements OnInit {
     private snackBar: MatSnackBar
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.homeService.GetHomeById(this.data.homeId).subscribe(result => {
       this.home = result;
     });
@@ -31,12 +31,13 @@ export class AddToHomeComponent implements OnInit {
   onSubmit(): void {
     this.form['homeId'] = this.data.homeId;
     this.form['text'] =
-      "Zostałeś zaporszony przez " + this.data.sender + " do domu: " + this.home.homeName;
-    this.form['notificationDate'] = new Date;
+      'Zostałeś zaproszony przez ' + this.data.sender + ' do domu: ' + this.home.homeName;
+    this.form['notificationDate'] = new Date();
     this.form['read'] = false;
+    this.form['sender'] = this.data.sender;
     this.notificationService.SendNotification(this.form).subscribe(
       data => {
-        this.dialogRef.close("reload");
+        this.dialogRef.close('reload');
       },
       err => {
         this.snackBar.open(err, 'Close', { duration: 2000, });

@@ -18,20 +18,18 @@ export class CreateHomeComponent {
     private dialogRef: MatDialogRef<CreateHomeComponent>,
     private homeService: HomeService,
     private userService: UserService,
-    private router:Router,
+    private router: Router,
     private snackBar: MatSnackBar
   ) { }
 
   onSubmit(): void {
     this.homeService.CreateHome(this.form).subscribe(result => {
-      console.log(result);
       this.userService.JoinHome(this.data.user.userId, result.homeId).subscribe(
         data => {
           this.router.navigateByUrl('home/dashboard');
           this.dialogRef.close();
         },
         err => {
-          console.log(err);
           this.snackBar.open(err, 'Close', { duration: 2000, });
         }
       );

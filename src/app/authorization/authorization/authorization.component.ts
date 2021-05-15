@@ -1,3 +1,5 @@
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/_services/_authService/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,12 +7,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './authorization.component.html',
   styleUrls: ['./authorization.component.scss']
 })
-export class AuthorizationComponent implements OnInit {
+export class AuthorizationComponent {
 
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

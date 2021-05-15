@@ -46,6 +46,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { CreateHomeComponent } from './user/create-home/create-home.component';
 import { NotificationsComponent } from './user/notifications/notifications.component';
+import { PasswordChangeComponent } from './authorization/password-change/password-change.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { NotificationsComponent } from './user/notifications/notifications.compo
     AddToHomeComponent,
     EditHomeComponent,
     CreateHomeComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    PasswordChangeComponent
   ],
   imports: [
     BrowserModule,

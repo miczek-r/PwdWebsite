@@ -18,10 +18,10 @@ export class NotificationService {
     return this.http.get<Notification[]>(environment.webAPI + '/Notification/UserEmai/' + email);
   }
 
-  DeleteNotification(notiId: number) {
+  DeleteNotification(notiId: number): Observable<any> {
     return this.http.delete(environment.webAPI + '/Notification/' + notiId);
   }
-  MakeRead(notiId: number) {
+  MakeRead(notiId: number): Observable<any> {
     return this.http.put(environment.webAPI + '/Notification/ChangeToSeen/' + notiId, null);
   }
 }

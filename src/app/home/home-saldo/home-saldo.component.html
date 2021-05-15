@@ -9,7 +9,7 @@
   <tr *ngFor="let user of users" matColumnDef="name">
     <td>{{user.firstName}} {{user.lastName}}</td>
     <td>{{user.email}} </td>
-    <td>{{user.saldo}}</td>
+    <td>{{user.saldo | number:'.2-2'}}</td>
   </tr>
   </table>
 </div>

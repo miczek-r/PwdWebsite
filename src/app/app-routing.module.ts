@@ -1,3 +1,4 @@
+import { PasswordChangeComponent } from './authorization/password-change/password-change.component';
 import { ConfirmEmailComponent } from './authorization/confirm-email/confirm-email.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,6 +13,7 @@ import { HomeExpenseListComponent } from './home/expense-list/expense-list.compo
 const routes: Routes = [
   { path: 'auth', component: AuthorizationComponent },
   {path: 'activate/:token', component: ConfirmEmailComponent},
+  {path: 'restore/:token', component: PasswordChangeComponent},
   { path: 'aasdasd/asdasd', component: SaldoComponent },
   { path: 'user/dashbord', component: UserDashboardComponent, canActivate: [AuthGuard] },
   { path: 'user/operations', component: UserExpenseListComponent, canActivate: [AuthGuard]},
