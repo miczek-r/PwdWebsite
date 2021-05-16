@@ -1,15 +1,13 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Home } from 'src/app/models/home/home';
 import { HomeService } from 'src/app/_services/_homeService/home.service';
 import { UserService } from 'src/app/_services/_userService/user.service';
 
 @Component({
   selector: 'app-create-home',
-  templateUrl: './create-home.component.html',
-  styleUrls: ['./create-home.component.scss']
+  templateUrl: './create-home.component.html'
 })
 export class CreateHomeComponent {
   form: any = {};

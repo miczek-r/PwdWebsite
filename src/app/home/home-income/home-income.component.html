@@ -1,10 +1,11 @@
 <div class="wrapper">
   <h1>Rozpis przychodów użytkowników domu</h1>
   <table>
+    <caption>Rozpis przychodów użytkowników domu</caption>
     <tr>
-      <th>Imię i Nazwisko</th>
-      <th>Email</th>
-      <th>Przychody</th>
+      <th scope="col">Imię i Nazwisko</th>
+      <th scope="col">Email</th>
+      <th scope="col">Przychody</th>
     </tr>
   <tr *ngFor="let user of users" matColumnDef="name">
     <td>{{user.firstName}} {{user.lastName}}</td>

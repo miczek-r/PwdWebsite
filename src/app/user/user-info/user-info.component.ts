@@ -1,14 +1,13 @@
 import { User } from './../../models/user/user';
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.scss']
 })
-export class UserInfoComponent implements OnInit {
+export class UserInfoComponent {
 
   user: User;
 
@@ -16,13 +15,5 @@ export class UserInfoComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.user = data.user;
-  }
-
-
-  ngOnInit(): void {
-  }
-
-  onSubmit(): void {
-
   }
 }

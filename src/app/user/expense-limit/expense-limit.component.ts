@@ -6,8 +6,7 @@ import { User } from 'src/app/models/user/user';
 
 @Component({
   selector: 'app-expense-limit',
-  templateUrl: './expense-limit.component.html',
-  styleUrls: ['./expense-limit.component.scss']
+  templateUrl: './expense-limit.component.html'
 })
 export class ExpenseLimitComponent implements OnInit {
   form: any = {};

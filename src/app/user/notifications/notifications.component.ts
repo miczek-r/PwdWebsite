@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotificationService } from 'src/app/_services/_notificationService/notification.service';
 import { Notification } from './../../models/notification/notification';
-import { Component, Inject, OnInit, AfterViewInit } from '@angular/core';
+import { Component, Inject, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserService } from 'src/app/_services/_userService/user.service';
 
@@ -28,8 +28,6 @@ export class NotificationsComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.notifications.forEach(element => {
       this.notificationService.MakeRead(element.notificationId).subscribe(
-        data => {
-        },
         err => {
           this.snackBar.open(err, 'Close', { duration: 2000, });
         }

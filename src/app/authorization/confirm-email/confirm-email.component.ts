@@ -1,6 +1,5 @@
 import { AuthService } from 'src/app/_services/_authService/auth.service';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from './../../_services/_userService/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfirmEmailComponent implements OnInit {
 
-  success = false;
+  success = null;
   constructor(private authService: AuthService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -19,6 +18,7 @@ export class ConfirmEmailComponent implements OnInit {
         this.success = true;
       },
       err => {
+        this.success = false;
       }
     );
   }

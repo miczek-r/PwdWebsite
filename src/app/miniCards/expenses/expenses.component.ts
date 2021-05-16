@@ -16,7 +16,7 @@ export class ExpensesComponent implements OnInit {
   public doughnutChartLabels: Label[] = [];
   public doughnutChartData: MultiDataSet = [[]
   ];
-  public doughnutChartColors: Array<any> = [{ backgroundColor: ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe', '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075', '#808080', '#ffffff', '#000000'], borderColor: 'transparent' }];
+  public doughnutChartColors: Array<any> = [{ backgroundColor: ['#BBBAFF', '#FFC2E2', '#F4FDB1', '#7C8BFF', '#95FFF7', '#D6FFC7', '#FFD6AA', '#C7D6DB', '#EADB80', '#B1D3C5', '#D9BBE6', '#AEDDEF', '#957DAD', '#DAE794', '#FEF5D4', '#E4BEB3', '#CE8467', '#FF9C9F', '#F7EAE2', '#EBEBE3'], borderColor: 'transparent' }];
   public doughnutChartType: ChartType = 'doughnut';
 
   constructor(private expenseService: ExpenseService) { }

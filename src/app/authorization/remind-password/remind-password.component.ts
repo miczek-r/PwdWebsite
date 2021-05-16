@@ -1,20 +1,16 @@
 import { AuthService } from 'src/app/_services/_authService/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UserService } from './../../_services/_userService/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-remind-password',
   templateUrl: './remind-password.component.html',
   styleUrls: ['../authorization/authorization.component.scss']
 })
-export class RemindPasswordComponent implements OnInit {
+export class RemindPasswordComponent {
   form: any = {};
   shakeIt = false;
   constructor(private authService: AuthService, private snackBar: MatSnackBar) { }
-
-  ngOnInit(): void {
-  }
 
   remind(): void {
     this.authService.GetPasswordRestorationToken(this.form.email).subscribe(

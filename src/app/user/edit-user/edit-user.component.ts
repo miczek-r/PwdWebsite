@@ -6,8 +6,7 @@ import { UserService } from 'src/app/_services/_userService/user.service';
 
 @Component({
   selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.scss']
+  templateUrl: './edit-user.component.html'
 })
 export class EditUserComponent implements OnInit {
   form: any = {};

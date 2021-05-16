@@ -1,19 +1,20 @@
 <h1>Informacje o użytkowniku</h1>
 <table>
+  <caption>Informacje o użytkowniku</caption>
   <tr>
-    <th>Imię</th>
+    <th scope="row">Imię</th>
     <td>{{user.firstName}}</td>
   </tr>
   <tr>
-    <th>Nazwisko</th>
+    <th scope="row">Nazwisko</th>
     <td>{{user.lastName}}</td>
   </tr>
   <tr>
-    <th>Email</th>
+    <th scope="row">Email</th>
     <td>{{user.email}}</td>
   </tr>
   <tr>
-    <th>Data urodzenia</th>
+    <th scope="row">Data urodzenia</th>
     <td>{{user.dateOfBirth | date: 'dd/MM/yyyy'}}</td>
   </tr>
 </table>

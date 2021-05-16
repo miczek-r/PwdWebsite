@@ -1,9 +1,7 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ExpenseType } from 'src/app/models/expenseType/expense-type';
 import { ExpenseService } from 'src/app/_services/_expenseService/expense.service';
-import { MatNativeDateModule } from '@angular/material/core';
-import { User } from 'src/app/models/user/user';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -11,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './add-expense.component.html',
   styleUrls: ['./add-expense.component.scss']
 })
-export class AddExpenseComponent implements OnInit {
+export class AddExpenseComponent {
 
   form: any = {};
   expenseTypes: ExpenseType[];
@@ -25,10 +23,6 @@ export class AddExpenseComponent implements OnInit {
     this.expenseService.GetAllExpenseTypes().subscribe((response) => {
       this.expenseTypes = response.filter(a => a.typeOfExpenseId !== 1);
     });
-
-  }
-
-  ngOnInit(): void {
 
   }
 

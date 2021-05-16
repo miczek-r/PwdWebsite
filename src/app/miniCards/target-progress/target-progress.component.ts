@@ -1,8 +1,6 @@
 import { Expense } from './../../models/expense/expense';
-import { User } from 'src/app/models/user/user';
 import { Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-target-progress',
@@ -14,7 +12,6 @@ export class TargetProgressComponent implements OnInit {
   @Input() limit: number;
   @Input() expenses: Expense[];
   progress: number;
-  constructor() { }
 
   ngOnInit(): void {
     let sum = 0;

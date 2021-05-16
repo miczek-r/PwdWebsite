@@ -1,9 +1,10 @@
 <div class="wrapper">
   <h1>Powiadomienia</h1>
   <table>
+    <caption>Tabela powiadomień</caption>
     <tr>
-      <th>Powiadomienie</th>
-      <th>Akcja</th>
+      <th scope="col">Powiadomienie</th>
+      <th scope="col">Akcja</th>
     </tr>
     <tr *ngFor="let notification of notifications" matColumnDef="name">
       <td>{{ notification.text }}</td>

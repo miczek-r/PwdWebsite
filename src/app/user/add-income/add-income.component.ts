@@ -1,14 +1,13 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ExpenseService } from 'src/app/_services/_expenseService/expense.service';
 
 @Component({
   selector: 'app-add-income',
-  templateUrl: './add-income.component.html',
-  styleUrls: ['./add-income.component.scss']
+  templateUrl: './add-income.component.html'
 })
-export class AddIncomeComponent implements OnInit {
+export class AddIncomeComponent {
 
   form: any = {};
   constructor(
@@ -17,12 +16,6 @@ export class AddIncomeComponent implements OnInit {
     private expenseService: ExpenseService,
     private snackBar: MatSnackBar
   ) { }
-
-
-
-
-  ngOnInit(): void {
-  }
 
   onSubmit(): void {
     this.form['ownerId'] = this.data.user.userId;

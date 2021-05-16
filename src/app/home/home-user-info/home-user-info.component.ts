@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from 'src/app/models/user/user';
 
@@ -7,15 +7,11 @@ import { User } from 'src/app/models/user/user';
   templateUrl: './home-user-info.component.html',
   styleUrls: ['./home-user-info.component.scss']
 })
-export class HomeUserInfoComponent implements OnInit {
+export class HomeUserInfoComponent {
   user: User;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.user = data.user;
   }
-
-  ngOnInit(): void {
-  }
-
 }

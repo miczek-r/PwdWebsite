@@ -57,7 +57,7 @@
         }
         .cls-12 {
           font-size: 72px;
-          font-family: CopperplateGothic-Bold, Copperplate Gothic Bold;
+          font-family: CopperplateGothic-Bold, Copperplate Gothic Bold, Helvetica, sans-serif;
           font-weight: 700;
         }
         .cls-13 {
@@ -135,9 +135,10 @@
   </div>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
+      <caption>Tabela wydatków domu</caption>
       <!-- ID Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">
           Nazwa operacji
         </th>
         <td mat-cell *matCellDef="let row">{{ row.nameOfExpense }}</td>
@@ -145,7 +146,7 @@
 
       <!-- Progress Column -->
       <ng-container matColumnDef="expenseType">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Typ operacji</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">Typ operacji</th>
         <td mat-cell *matCellDef="let row">
           {{ getType(row.typeOfExpenseId) }}
         </td>
@@ -153,13 +154,13 @@
 
       <!-- Name Column -->
       <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Data</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">Data</th>
         <td mat-cell *matCellDef="let row">{{ row.expenseDate | date: 'dd/MM/yyyy'}}</td>
       </ng-container>
 
       <!-- Color Column -->
       <ng-container matColumnDef="amount">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Kwota</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">Kwota</th>
         <td mat-cell *matCellDef="let row">{{ row.amount | number:'.2-2'}}</td>
       </ng-container>
 

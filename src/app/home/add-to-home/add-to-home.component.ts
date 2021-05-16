@@ -1,6 +1,5 @@
 import { Home } from 'src/app/models/home/home';
 import { HomeService } from 'src/app/_services/_homeService/home.service';
-import { Notification } from './../../models/notification/notification';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,8 +7,7 @@ import { NotificationService } from 'src/app/_services/_notificationService/noti
 
 @Component({
   selector: 'app-add-to-home',
-  templateUrl: './add-to-home.component.html',
-  styleUrls: ['./add-to-home.component.scss']
+  templateUrl: './add-to-home.component.html'
 })
 export class AddToHomeComponent implements OnInit {
   home: Home;

@@ -4,7 +4,7 @@ import { NotificationService } from 'src/app/_services/_notificationService/noti
 import { CreateHomeComponent } from './../create-home/create-home.component';
 import { SetSaldoComponent } from './../set-saldo/set-saldo.component';
 import { UserInfoComponent } from './../user-info/user-info.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Expense } from 'src/app/models/expense/expense';
 import { User } from 'src/app/models/user/user';

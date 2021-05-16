@@ -15,7 +15,7 @@ export class NotificationService {
   }
 
   GetUserNotifications(email: string): Observable<Notification[]> {
-    return this.http.get<Notification[]>(environment.webAPI + '/Notification/UserEmai/' + email);
+    return this.http.get<Notification[]>(environment.webAPI + '/Notification/UserEmail/' + email);
   }
 
   DeleteNotification(notiId: number): Observable<any> {

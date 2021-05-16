@@ -5,11 +5,6 @@ $warning: #b74747;
 $good: #77dd77;
 $neutral: #ffc02a;
 
-mat-card {
-  border-radius: 20px;
-  cursor: pointer;
-}
-
 .dashbord-main {
   max-width: 1300px;
   margin: auto !important;
@@ -44,6 +39,8 @@ mat-icon {
 }
 
 mat-card {
+  border-radius: 20px;
+  cursor: pointer;
   height: 168px;
   &.small {
     height: 68px;

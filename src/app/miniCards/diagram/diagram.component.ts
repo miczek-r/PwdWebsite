@@ -1,11 +1,8 @@
 import { Component, Input, OnInit, } from '@angular/core';
-import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
 import { Expense } from 'src/app/models/expense/expense';
 @Component({
   selector: 'app-diagram',
-  templateUrl: './diagram.component.html',
-  styleUrls: ['./diagram.component.scss']
+  templateUrl: './diagram.component.html'
 })
 export class DiagramComponent implements OnInit {
   @Input() expenses: Expense[];

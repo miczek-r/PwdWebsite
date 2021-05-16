@@ -9,7 +9,6 @@ import { Expense } from 'src/app/models/expense/expense';
 export class IncomeComponent implements OnInit {
   @Input() expenses: Expense[];
   income = 0;
-  constructor() { }
 
   ngOnInit(): void {
     const date = new Date();

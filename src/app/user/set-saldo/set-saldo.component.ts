@@ -6,8 +6,7 @@ import { UserService } from 'src/app/_services/_userService/user.service';
 
 @Component({
   selector: 'app-set-saldo',
-  templateUrl: './set-saldo.component.html',
-  styleUrls: ['./set-saldo.component.scss']
+  templateUrl: './set-saldo.component.html'
 })
 export class SetSaldoComponent implements OnInit {
   form: any = {};

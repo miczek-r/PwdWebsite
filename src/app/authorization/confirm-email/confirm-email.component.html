@@ -59,7 +59,7 @@
           }
           .cls-12 {
             font-size: 72px;
-            font-family: CopperplateGothic-Bold, Copperplate Gothic Bold;
+            font-family: CopperplateGothic-Bold, Copperplate Gothic Bold, Helvetica, sans-serif;
             font-weight: 700;
           }
           .cls-13 {
@@ -112,9 +112,9 @@
     </svg>
     CASHBUDDY
   </div>
-<mat-card style="padding:8rem">
-  <div *ngIf="success">Udało się potwierdzić e-mail</div>
-  <div *ngIf="!success">Błąd potwierdzania e-maila</div>
+<mat-card style="padding:8rem" *ngIf="success!=null">
+  <div *ngIf="success; else error">Udało się potwierdzić e-mail</div>
+  <ng-template #error>Błąd potwierdzania e-maila</ng-template>
   <a  routerLink="/user/dashboard" routerLinkActive="active">Powrót do logowania</a>
 </mat-card>
 </div>

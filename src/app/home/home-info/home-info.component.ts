@@ -1,6 +1,6 @@
 import { HomeService } from 'src/app/_services/_homeService/home.service';
 import { Home } from 'src/app/models/home/home';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -8,7 +8,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './home-info.component.html',
   styleUrls: ['./home-info.component.scss']
 })
-export class HomeInfoComponent implements OnInit {
+export class HomeInfoComponent {
   home: Home;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -18,8 +18,4 @@ export class HomeInfoComponent implements OnInit {
       this.home = result;
     });
   }
-
-  ngOnInit(): void {
-  }
-
 }
