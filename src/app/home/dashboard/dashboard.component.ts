@@ -62,16 +62,12 @@ export class HomeDashboardComponent implements OnInit {
       this.homeService.GetHomeUsers(this.tempUser.homeId).subscribe((data) => {
         this.user = data;
         this.user.forEach(element => {
+          this.saldo += element.saldo;
           this.expenseService.GetHomeExpenses(this.tempUser.homeId).subscribe((homeExpenses) => {
             this.expenses = homeExpenses;
           });
         });
       });
-      if (this.user) {
-        this.user.forEach(element => {
-          this.saldo += element.saldo;
-        });
-      }
     });
 
 
