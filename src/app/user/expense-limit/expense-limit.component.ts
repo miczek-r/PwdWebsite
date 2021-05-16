@@ -28,7 +28,7 @@ export class ExpenseLimitComponent implements OnInit {
         this.dialogRef.close('reload');
       },
       err => {
-        this.snackBar.open(err, 'Close', { duration: 2000, });
+        this.snackBar.open('Błąd zmiany limitu', 'Zamknij', { duration: 2000, });
       }
     );
   }

@@ -28,7 +28,7 @@ export class SetSaldoComponent implements OnInit {
         this.dialogRef.close('reload');
       },
       err => {
-        this.snackBar.open(err, 'Close', { duration: 2000, });
+        this.snackBar.open('Błąd ustawiania salda', 'Zamknij', { duration: 2000, });
       }
     );
   }

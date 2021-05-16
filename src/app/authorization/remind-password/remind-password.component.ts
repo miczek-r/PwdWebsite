@@ -15,11 +15,11 @@ export class RemindPasswordComponent {
   remind(): void {
     this.authService.GetPasswordRestorationToken(this.form.email).subscribe(
       data => {
-        this.snackBar.open('Wysłano prośbę zmiany hasła. Sprawdź pocztę', 'Close', { duration: 2000, });
+        this.snackBar.open('Wysłano prośbę zmiany hasła. Sprawdź pocztę', 'Zamknij', { duration: 2000, });
       },
       err => {
         this.shakeDialog();
-        this.snackBar.open('Błąd przypominania hasła', 'Close', { duration: 2000, });
+        this.snackBar.open('Błąd przypominania hasła', 'Zamknij', { duration: 2000, });
       }
     );
   }

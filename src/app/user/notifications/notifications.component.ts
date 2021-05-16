@@ -29,7 +29,7 @@ export class NotificationsComponent implements AfterViewInit {
     this.notifications.forEach(element => {
       this.notificationService.MakeRead(element.notificationId).subscribe(
         err => {
-          this.snackBar.open(err, 'Close', { duration: 2000, });
+          this.snackBar.open('Błąd zmiany powiadomień na przeczytane', 'Zamknij', { duration: 2000, });
         }
       );
     });
@@ -42,7 +42,7 @@ export class NotificationsComponent implements AfterViewInit {
         this.dialogRef.close('reload');
       },
       err => {
-        this.snackBar.open(err, 'Close', { duration: 2000, });
+        this.snackBar.open('Błąd usuwania powiadomienia', 'Zamknij', { duration: 2000, });
       }
     );
   }
@@ -55,7 +55,7 @@ export class NotificationsComponent implements AfterViewInit {
         this.dialogRef.close();
       },
       err => {
-        this.snackBar.open(err, 'Close', { duration: 2000, });
+        this.snackBar.open('Błąd dołączania do domu', 'Zamknij', { duration: 2000, });
       }
     );
   }

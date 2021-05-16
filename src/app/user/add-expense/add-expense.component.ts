@@ -33,7 +33,7 @@ export class AddExpenseComponent {
         this.dialogRef.close('reload');
       },
       err => {
-        this.snackBar.open(err, 'Close', { duration: 2000, });
+        this.snackBar.open('Błąd dodawania wydatku', 'Zamknij', { duration: 2000, });
       }
     );
   }

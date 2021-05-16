@@ -25,7 +25,7 @@ export class AddIncomeComponent {
         this.dialogRef.close('reload');
       },
       err => {
-        this.snackBar.open(err, 'Close', { duration: 2000, });
+        this.snackBar.open('Błąd dodawania przychodu', 'Zamknij', { duration: 2000, });
       }
     );
   }

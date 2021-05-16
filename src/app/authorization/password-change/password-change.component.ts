@@ -21,10 +21,10 @@ export class PasswordChangeComponent{
   onSubmit(): void {
     this.authService.ChangePassword(this.route.snapshot.params.token, this.form.password).subscribe(
       data => {
-        this.snackBar.open('Udało się zmienić hasło.', 'Close', { duration: 2000, });
+        this.snackBar.open('Udało się zmienić hasło.', 'Zamknij', { duration: 2000, });
       },
       err => {
-        this.snackBar.open('Błąd przy próbie zmiany hasła', 'Close', { duration: 2000, });
+        this.snackBar.open('Błąd przy próbie zmiany hasła', 'Zamknij', { duration: 2000, });
       }
     );
   }

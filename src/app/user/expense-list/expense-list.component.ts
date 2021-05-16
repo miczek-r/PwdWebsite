@@ -92,7 +92,7 @@ export class UserExpenseListComponent {
     this.expenseService.deleteExpense(expenseId).subscribe((data) => {
       location.reload();
     }, err => {
-      this.snackBar.open(err, 'Close', { duration: 2000, });
+      this.snackBar.open('Błąd usuwania wydatku', 'Zamknij', { duration: 2000, });
     });
   }
 }

@@ -30,7 +30,7 @@ export class EditHomeComponent implements OnInit {
         this.dialogRef.close('reload');
       },
       err => {
-        this.snackBar.open(err, 'Close', { duration: 2000, });
+        this.snackBar.open('Błąd edycji domu', 'Zamknij', { duration: 2000, });
       }
     );
   }

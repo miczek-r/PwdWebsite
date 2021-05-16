@@ -1,3 +1,4 @@
+import { HomeService } from './../../_services/_homeService/home.service';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -15,7 +16,7 @@ import { ExpenseService } from 'src/app/_services/_expenseService/expense.servic
   styleUrls: ['./expense-list.component.scss']
 })
 export class HomeExpenseListComponent {
-  displayedColumns: string[] = ['name', 'expenseType', 'date', 'amount'];
+  displayedColumns: string[] = ['name', 'expenseType', 'date', 'owner', 'amount'];
   dataSource: MatTableDataSource<Expense>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -23,6 +24,7 @@ export class HomeExpenseListComponent {
   expenses: Expense[];
   expenseTypes: ExpenseType[];
   user: User;
+  users: User[];
 
   filteredValues =
     {
@@ -31,7 +33,12 @@ export class HomeExpenseListComponent {
     };
 
 
-  constructor(private authService: AuthService, private expenseService: ExpenseService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private expenseService: ExpenseService,
+    private homeService: HomeService,
+    private router: Router
+  ) {
     this.authService.update().then(result => {
       this.user = this.authService.getUser();
       if (this.user.homeId === null) {
@@ -56,6 +63,10 @@ export class HomeExpenseListComponent {
             (exp.typeOfExpenseId === JSON.parse(filter)['typeOfExpenseId'] ||
               JSON.parse(filter)['typeOfExpenseId'].toString() === '')
             && (JSON.parse(filter)['nameOfExpense'] === '' || exp.nameOfExpense.includes(JSON.parse(filter)['nameOfExpense']));
+      });
+
+      this.homeService.GetHomeUsers(this.user.homeId).subscribe(data => {
+        this.users = data;
       });
 
       this.expenseService.GetAllExpenseTypes().subscribe((data) => {
@@ -86,6 +97,10 @@ export class HomeExpenseListComponent {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  getUserEmail(id: number): string {
+    return this.users.find(a => a.userId === id).email;
   }
 
   getType(id: number): string {

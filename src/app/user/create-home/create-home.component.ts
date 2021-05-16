@@ -28,7 +28,7 @@ export class CreateHomeComponent {
           this.dialogRef.close();
         },
         err => {
-          this.snackBar.open(err, 'Close', { duration: 2000, });
+          this.snackBar.open('Błąd tworzenia domu', 'Zamknij', { duration: 2000, });
         }
       );
     }

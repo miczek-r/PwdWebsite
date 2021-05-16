@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
         this.shakeDialog();
-        this.snackBar.open('Nie można zalogować', 'Close', { duration: 2000, });
+        this.snackBar.open('Nie można zalogować', 'Zamknij', { duration: 2000, });
       }
     );
   }
